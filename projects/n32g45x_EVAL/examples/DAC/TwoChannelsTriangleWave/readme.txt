@@ -2,7 +2,7 @@
     1、TIM5周期触发DAC CH1 CH2输出三角波数据到DAC，在PA4 PA5输出三角波形
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：        基于N32G4XV-STB V1.0开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -19,3 +19,29 @@
         2、全速运行时，TIM5的每个周期触发PA4 PA5的一个数据，形成三角波
 4、注意事项
     无
+
+
+
+
+1. Function description
+    1. TIM5 periodically triggers DAC CH1 CH2 to output triangular wave data to DAC, and outputs triangular waveform in PA4 PA5
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.26.2.0
+    Hardware environment: Developed based on the development board N32G4XV-STB V1.0
+3. Instructions for use
+    System configuration;
+        1. Clock source:
+            HSE = 8M, PLL = 144M, AHB = 144M, APB1 = 36M, APB2 = 72M, DAC CLK = 36M, 
+            TIM5 CLK = 72M
+        2. Port Configuration:
+            PA4 is selected as analog function, DAC CH1 OUT
+            PA5 is selected as analog function, DAC CH2 OUT
+        3, TIM:
+            The TIM5 update event is output to DAC as a trigger
+        4, DAC:
+            DAC selects TIM5 TRGO signal trigger, opens CH1 and CH2 channels, and enables triangle wave amplitude 2048 and base value 0X100
+    Instructions:
+        1. After compiling, open the debugging mode and observe the output waveform of PA4 AND PA5 with oscilloscope
+        2. When running at full speed, each cycle of TIM5 triggers one data of PA4 PA5, forming triangle wave
+4. Matters needing attention
+    None

@@ -37,7 +37,6 @@
 #include "n32g45x.h"
 #include "n32g45x_spi.h"
 #include <rtthread.h>
-#include "rt_config.h"
 #include "drv_gpio.h"
 
 #if defined(RT_USING_SPI) && defined(RT_USING_PIN)
@@ -325,6 +324,9 @@ int rt_hw_spi_init(void)
 
     result = rt_spi_bus_register(&spi_bus3, "spi3", &spi_ops);
     
+	/* Enable AFIO clock */
+	RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
+	
     GPIO_ConfigPinRemap(GPIO_RMP_SW_JTAG_SW_ENABLE, ENABLE);
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_SPI3, ENABLE);
     

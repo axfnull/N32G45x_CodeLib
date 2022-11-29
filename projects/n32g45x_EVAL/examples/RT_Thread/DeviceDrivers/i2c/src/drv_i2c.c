@@ -36,7 +36,6 @@
 #include "drv_i2c.h"
 #include <rtthread.h>
 #include "n32g45x.h"
-#include "rt_config.h"
 #include "n32g45x_i2c.h"
 #include "drv_gpio.h"
 
@@ -55,7 +54,7 @@
 #define I2CT_FLAG_TIMEOUT ((uint32_t)0x1000)
 #define I2CT_LONG_TIMEOUT ((uint32_t)(10 * I2CT_FLAG_TIMEOUT))
 
-static uint32_t I2CTimeout = I2CT_LONG_TIMEOUT;
+
 
 #ifdef RT_USING_I2C_BITOPS
 
@@ -63,10 +62,10 @@ static uint32_t I2CTimeout = I2CT_LONG_TIMEOUT;
 #define I2C_BUS_NAME  "i2c1"
 
 /*user should change this to adapt specific board*/
-#define I2C_SCL_PIN          GPIO_PIN_6
+#define I2C_SCL_PIN          GPIO_PIN_8
 #define I2C_SCL_PORT         GPIOB
 #define I2C_SCL_CLK          RCC_APB2_PERIPH_GPIOB
-#define I2C_SDA_PIN          GPIO_PIN_7
+#define I2C_SDA_PIN          GPIO_PIN_9
 #define I2C_SDA_PORT         GPIOB
 #define I2C_SDA_CLK          RCC_APB2_PERIPH_GPIOB
 
@@ -74,8 +73,8 @@ struct n32g45x_i2c_bit_data
 {
     struct
     {
-        rcu_periph_enum clk;
-        rt_uint32_t port;
+        rt_uint32_t clk;
+        GPIO_Module* port;
         rt_uint32_t pin;
     }scl, sda;
 };
@@ -86,11 +85,11 @@ static void gpio_set_sda(void *data, rt_int32_t state)
 
     if (state)
     {
-        gpio_bit_set(bd->sda.port, bd->sda.pin);
+        GPIO_SetBits((GPIO_Module*)bd->sda.port, bd->sda.pin);
     }
     else
     {
-        gpio_bit_reset(bd->sda.port, bd->sda.pin);
+        GPIO_ResetBits((GPIO_Module*)bd->sda.port, bd->sda.pin);
     }
 }
 
@@ -99,11 +98,11 @@ static void gpio_set_scl(void *data, rt_int32_t state)
     struct n32g45x_i2c_bit_data* bd = data;
     if (state)
     {
-        gpio_bit_set(bd->scl.port, bd->scl.pin);
+        GPIO_SetBits((GPIO_Module*)bd->scl.port, bd->scl.pin);
     }
     else
     {
-        gpio_bit_reset(bd->scl.port, bd->scl.pin);
+        GPIO_ResetBits((GPIO_Module*)bd->scl.port, bd->scl.pin);
     }
 }
 
@@ -111,19 +110,21 @@ static rt_int32_t gpio_get_sda(void *data)
 {
     struct n32g45x_i2c_bit_data* bd = data;
 
-    return gpio_input_bit_get(bd->sda.port, bd->sda.pin);
+    return GPIO_ReadInputDataBit((GPIO_Module*)bd->sda.port, bd->sda.pin);
 }
 
 static rt_int32_t gpio_get_scl(void *data)
 {
     struct n32g45x_i2c_bit_data* bd = data;
 
-    return gpio_input_bit_get(bd->scl.port, bd->scl.pin);
+    return GPIO_ReadInputDataBit((GPIO_Module*)bd->scl.port, bd->scl.pin);
 }
 
 static void gpio_udelay(rt_uint32_t us)
 {
-    int i = ( rcu_clock_freq_get(CK_SYS) / 4000000 * us);
+    RCC_ClocksType* RCC_Clocks;
+    RCC_GetClocksFreqValue(RCC_Clocks);
+    int i = ( RCC_Clocks->SysclkFreq / 4000000 * us);
     while(i)
     {
         i--;
@@ -132,22 +133,18 @@ static void gpio_udelay(rt_uint32_t us)
 
 static void drv_i2c_gpio_init(const struct n32g45x_i2c_bit_data* bd)
 {
-    rcu_periph_clock_enable(bd->sda.clk);
-    rcu_periph_clock_enable(bd->scl.clk);
-    GPIOInit(bd->sda.port, GPIO_MODE_OUT_OD, GPIO_OSPEED_10MHZ, bd->sda.pin);
-    GPIOInit(bd->scl.port, GPIO_MODE_OUT_OD, GPIO_OSPEED_10MHZ, bd->scl.pin);
+    RCC_EnableAPB2PeriphClk(bd->sda.clk | bd->scl.clk, ENABLE);
+    GPIOInit((GPIO_Module*)bd->sda.port, GPIO_Mode_Out_OD, GPIO_Speed_10MHz, bd->sda.pin);
+    GPIOInit((GPIO_Module*)bd->scl.port, GPIO_Mode_Out_OD, GPIO_Speed_10MHz, bd->scl.pin);
 
-    gpio_bit_set(bd->sda.port, bd->sda.pin);
-    gpio_bit_set(bd->scl.port, bd->scl.pin);
+    GPIO_SetBits((GPIO_Module*)bd->sda.port, bd->sda.pin);
+    GPIO_SetBits((GPIO_Module*)bd->scl.port, bd->scl.pin);
 }
 
 #else /* use hardware i2c */
 
-struct rt_i2c_bus
-{
-    struct rt_i2c_bus_device parent;
-    rt_uint32_t i2c_periph;
-};
+static uint32_t I2CTimeout = I2CT_LONG_TIMEOUT;
+
 
 static int rt_i2c_read(rt_uint32_t i2c_periph, rt_uint16_t slave_address, rt_uint8_t* p_buffer, rt_uint16_t data_byte)
 {
@@ -335,7 +332,7 @@ int rt_hw_i2c_init(void)
 #ifdef RT_USING_I2C_BITOPS
     {
         static struct rt_i2c_bus_device i2c_device;
-        static const struct rt_i2c_bit_data _i2c_bdata =
+        static const struct n32g45x_i2c_bit_data _i2c_bdata =
         {
             /* SCL */
             {    I2C_SCL_CLK, I2C_SCL_PORT, I2C_SCL_PIN},
@@ -369,12 +366,14 @@ int rt_hw_i2c_init(void)
     static struct rt_i2c_bus i2c_bus1;
     I2C_InitType I2C_InitStructure;
 
+    /* Enable AFIO clock */
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
     GPIO_ConfigPinRemap(GPIO_RMP_I2C1, ENABLE);
+	
     /* connect PB8 to I2C1_SCL, PB9 to I2C1_SDA */
     GPIOInit(GPIOB, GPIO_Mode_AF_OD, GPIO_Speed_50MHz, GPIO_PIN_8 | GPIO_PIN_9);
     
-    /* enable I2C clock */
+    /* Enable I2C clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_I2C1, ENABLE);
     
     I2C_DeInit(I2C1);
@@ -391,20 +390,19 @@ int rt_hw_i2c_init(void)
     i2c_bus1.parent.ops = &i2c_ops;
     i2c_bus1.i2c_periph = (rt_uint32_t)I2C1;
     rt_i2c_bus_device_register(&i2c_bus1.parent, "i2c1");
-#endif
+#endif /* RT_USING_I2C1 */
 
 #ifdef RT_USING_I2C2
-#define I2C2_SPEED  100000
+#define I2C2_SPEED  400000
 
     static struct rt_i2c_bus i2c_bus2;
     I2C_InitType I2C_InitStructure;
 
-    /* enable I2C clock */
-    RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_I2C2, ENABLE);
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
-
     /* connect PB10 to I2C2_SCL, PB11 to I2C2_SDA */
     GPIOInit(GPIOB, GPIO_Mode_AF_OD, GPIO_Speed_50MHz, GPIO_PIN_10 | GPIO_PIN_11);
+	
+	/* Enable I2C clock */
+    RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_I2C2, ENABLE);
 
     I2C_DeInit(I2C2);
     I2C_InitStructure.BusMode     = I2C_BUSMODE_I2C;
@@ -412,7 +410,7 @@ int rt_hw_i2c_init(void)
     I2C_InitStructure.OwnAddr1    = 0xff;
     I2C_InitStructure.AckEnable   = I2C_ACKEN;
     I2C_InitStructure.AddrMode    = I2C_ADDR_MODE_7BIT;
-    I2C_InitStructure.ClkSpeed    = I2C2_SPEED; // 100000 100K
+    I2C_InitStructure.ClkSpeed    = I2C2_SPEED; // 400000 400K
 
     I2C_Init(I2C2, &I2C_InitStructure);
 
@@ -420,20 +418,19 @@ int rt_hw_i2c_init(void)
     i2c_bus2.parent.ops = &i2c_ops;
     i2c_bus2.i2c_periph = (rt_uint32_t)I2C2;
     rt_i2c_bus_device_register(&i2c_bus2.parent, "i2c2");
-#endif
+#endif /* RT_USING_I2C2 */
 
 #ifdef RT_USING_I2C3
-#define I2C3_SPEED  100000
+#define I2C3_SPEED  400000
 
     static struct rt_i2c_bus i2c_bus3;
     I2C_InitType I2C_InitStructure;
 
-    /* enable I2C clock */
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_I2C3, ENABLE);
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
-
     /* connect PC0 to I2C3_SCL, PC1 to I2C3_SDA */
     GPIOInit(GPIOC, GPIO_Mode_AF_OD, GPIO_Speed_50MHz, GPIO_PIN_0 | GPIO_PIN_1);
+	
+	/* Enable I2C clock */
+    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_I2C3, ENABLE);
     
     I2C_DeInit(I2C3);
     I2C_InitStructure.BusMode     = I2C_BUSMODE_I2C;
@@ -441,7 +438,7 @@ int rt_hw_i2c_init(void)
     I2C_InitStructure.OwnAddr1    = 0xff;
     I2C_InitStructure.AckEnable   = I2C_ACKEN;
     I2C_InitStructure.AddrMode    = I2C_ADDR_MODE_7BIT;
-    I2C_InitStructure.ClkSpeed    = I2C3_SPEED; // 100000 100K
+    I2C_InitStructure.ClkSpeed    = I2C3_SPEED; // 400000 400K
 
     I2C_Init(I2C3, &I2C_InitStructure);
 
@@ -449,20 +446,23 @@ int rt_hw_i2c_init(void)
     i2c_bus3.parent.ops = &i2c_ops;
     i2c_bus3.i2c_periph = (rt_uint32_t)I2C3;
     rt_i2c_bus_device_register(&i2c_bus3.parent, "i2c3");
-#endif
+#endif /* RT_USING_I2C3 */
 
 #ifdef RT_USING_I2C4
-#define I2C4_SPEED  100000
+#define I2C4_SPEED  400000
 
     static struct rt_i2c_bus i2c_bus4;
     I2C_InitType I2C_InitStructure;
-
-    /* enable I2C clock */
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_I2C4, ENABLE);
+	
+	/* Enable AFIO clock */
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
+    GPIO_ConfigPinRemap(GPIO_RMP1_I2C4, ENABLE);
 
-    /* connect PC6 to I2C4_SCL, PC7 to I2C4_SDA */
-    GPIOInit(GPIOC, GPIO_Mode_AF_OD, GPIO_Speed_50MHz, GPIO_PIN_6 | GPIO_PIN_7);
+    /* connect PD14 to I2C4_SCL, PD15 to I2C4_SDA */
+    GPIOInit(GPIOD, GPIO_Mode_AF_OD, GPIO_Speed_50MHz, GPIO_PIN_14 | GPIO_PIN_15);
+	
+	/* Enable I2C clock */
+    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_I2C4, ENABLE);
 
     I2C_DeInit(I2C4);
     I2C_InitStructure.BusMode     = I2C_BUSMODE_I2C;
@@ -470,7 +470,7 @@ int rt_hw_i2c_init(void)
     I2C_InitStructure.OwnAddr1    = 0xff;
     I2C_InitStructure.AckEnable   = I2C_ACKEN;
     I2C_InitStructure.AddrMode    = I2C_ADDR_MODE_7BIT;
-    I2C_InitStructure.ClkSpeed    = I2C4_SPEED; // 100000 100K
+    I2C_InitStructure.ClkSpeed    = I2C4_SPEED; // 400000 400K
 
     I2C_Init(I2C4, &I2C_InitStructure);
 
@@ -478,7 +478,7 @@ int rt_hw_i2c_init(void)
     i2c_bus4.parent.ops = &i2c_ops;
     i2c_bus4.i2c_periph = (rt_uint32_t)I2C4;
     rt_i2c_bus_device_register(&i2c_bus4.parent, "i2c4");
-#endif
+#endif /* RT_USING_I2C4 */
 
 #endif /* RT_USING_I2C_BITOPS */
 

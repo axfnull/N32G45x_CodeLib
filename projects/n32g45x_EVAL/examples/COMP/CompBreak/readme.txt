@@ -2,7 +2,7 @@
     1、COMP1的输出刹车TIM1 TIM8的互补信号，COMP OUT变低后恢复TIM1 TIM8波形
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：        基于N32G4XV-STB V1.0 开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -37,3 +37,44 @@
         2、当软件输出PE2电平大于PE3时，TIM波形消失，相反时，波形正常输出
 4、注意事项
     无
+
+
+1. Function description
+    1. The output of COMP1 brakes the complementary signal of TIM1 and TIM8, and the waveform of TIM1 and TIM8 is restored after COMP OUT goes low.
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.26.2.0
+    Hardware environment: Developed based on the evaluation board N32G4XV-STB V1.0
+3. Instructions for use
+    System Configuration;
+        1. Clock source:
+                    HSE=8M, PLL=144M, AHB=144M, APB1=36M, APB2=72M, COMP CLK=36M, TIM1 CLK=144M, TIM8 CLK=144M
+        2. Port configuration:
+                    PB10 is selected as the analog function, COMP INP
+                    PA4 is selected as the analog function, COMP INM
+                    PA0 is selected as the analog function, COMP OUT
+                    PE2 is selected as IO output
+                    PE3 is selected as IO output
+                    PA8 is selected as TIM1 CH1 output
+                    PA9 is selected as TIM1 CH2 output
+                    PA10 is selected as TIM1 CH3 output
+                    PB13 is selected as TIM1 CH1N output
+                    PB14 is selected as TIM1 CH2N output
+                    PB15 is selected as TIM1 CH3N output
+                    PA11 is selected as TIM1 CH4 output
+                    PB12 is selected as TIM1 breakin input
+                    PC6 is selected as TIM8 CH1 output
+                    PC7 is selected as TIM8 CH2 output
+                    PC8 is selected as TIM8 CH3 output
+                    PA7 is selected as TIM8 CH1N output
+                    PB0 is selected as TIM8 CH2N output
+                    PB1 is selected as TIM8 CH3N output
+        3. TIM:
+                    TIM1 turns on CH1 CH2 CH3 CH1N CH2N CH3N output, COMP is used as brake input
+                    TIM8 turns on CH1 CH2 CH3 CH1N CH2N CH3N output, COMP is used as brake input
+        4. COMP:
+                    COMP1 output triggers TIM1 TIM8 brakes, and restores TIM1 TIM8 output when there is no output
+    Instructions:
+        1. After compiling, turn on the debug mode, connect PE2 to PB10 and PE3 to PA4, use an oscilloscope or logic analyzer to observe the output waveforms of TIM1 and TIM8
+        2. When the software output PE2 level is greater than PE3, the TIM waveform disappears, on the contrary, the waveform is output normally
+4. Matters needing attention
+    without

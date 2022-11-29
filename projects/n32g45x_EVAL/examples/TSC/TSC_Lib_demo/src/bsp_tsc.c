@@ -121,11 +121,11 @@ int32_t tsc_alg_isr_callback(tsc_alg_type type, uint32_t event, uint32_t chn, ui
     if (type == TSC_ALG_BUTTON_TYPE)
     {
         if (event == TSC_PRESS_KEY_NORMAL) {//正常按键操作
-            for (cnt = 0; cnt < 4; cnt++)
+            for (cnt = 0; cnt < KEY_NUM; cnt++)
             {
-                if (chn == gtsc_list[cnt].chn)
+                if (chn == (uint32_t)(gtsc_list[cnt].chn))
                 {
-                    log_debug("Key [%x] press %d\r\n", gtsc_list[cnt].chn, value);
+                    log_debug("Key [%x] press %d\r\n", (unsigned int)(gtsc_list[cnt].chn), (int)value);
                     if (value)
                     {
                         LED6_ON();
@@ -180,12 +180,12 @@ int32_t app_touch_init(void)
     }
     else if(sizeof(TscKey.sram) < size)
     {
-        log_error("Sram is too small,(%d)chn need ram %d,but support size is %d\r\n",totals_chn, size, sizeof(TscKey.sram));
+        log_error("Sram is too small,(%d)chn need ram %d,but support size is %d\r\n",(int)totals_chn, (int)size, sizeof(TscKey.sram));
         return TSC_SOURCE_NOT_ENOUGH_ERR;
     }
     else 
     {
-        log_info("tsc_alg_need_sramsize ok:size=%d\r\n",size);
+        log_info("tsc_alg_need_sramsize ok:size=%d\r\n",(int)size);
     }
 
     //初始化触控模块及BUF
@@ -206,7 +206,7 @@ int32_t app_touch_init(void)
     ret                                 = tsc_alg_init(&TSC_AlgStructure);
     if (ret != TSC_SUCCESS)
     {
-        log_error( "tsc_alg_init errcode = %x.\r\n", ret);
+        log_error( "tsc_alg_init errcode = %x.\r\n", (unsigned int)ret);
         return ret;
     } else {
         log_info("tsc_alg_init ok.\r\n");
@@ -216,7 +216,7 @@ int32_t app_touch_init(void)
     ret = tsc_alg_start();
     if (ret != TSC_SUCCESS)
     {
-        log_error( "errcode = %x.\r\n", ret);
+        log_error( "errcode = %x.\r\n", (unsigned int)ret);
         return ret;
     } 
     else 

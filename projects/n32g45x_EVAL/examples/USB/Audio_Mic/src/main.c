@@ -40,7 +40,7 @@
 __IO uint32_t TimingDelay     = 0;
 
 /** @addtogroup DAC_OneChanneloutputNoiseWave
- * @{
+ * @{                                   
  */
 
 void Delay(__IO uint32_t nCount);

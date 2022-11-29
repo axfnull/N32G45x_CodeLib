@@ -65,7 +65,6 @@ int main(void)
      - Gated mode is used, so starts and stops of slaves counters
       are controlled by the Master trigger output signal(update event).
 
-    * For Low-density, Medium-density, High-density and Connectivity line devices:
      The TIMxCLK is fixed to 72 MHz, the TIM2 counter clock is 72 MHz.
      The Master Timer TIM2 is running at 281.250 KHz and the duty cycle
      is equal to 25%
@@ -75,12 +74,6 @@ int main(void)
      The TIM4 is running:
      - At (TIM2 frequency)/ (TIM4 period + 1) = 56.250 KHz and a duty cycle
      equal to TIM4_CCR1/(TIM4_ARR + 1) = 60%
-
-    * For Value line devices:
-     The TIMxCLK is fixed to 24 MHz, the TIM2 counter clock is 24 MHz.
-     TIM2 frequency = 93.750 KHz,
-     TIM3 frequency = 23.437 KHz,
-     TIM4 frequency = 18.75 KHz
     -------------------------------------------------------------------- */
 
     /* Time base configuration */

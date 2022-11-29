@@ -2,7 +2,7 @@
     1、TIM2 CH1 CH2 CH3 CH4 达到CC值后，对应拉低PC6 PC7 PC8 PC9的IO电平
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：      基于N32G4XVL-STB V1.1开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -21,3 +21,27 @@
         2、定时器运进入CC1 CC2 CC3 CC4中断后,对应拉低PC6 PC7 PC8 PC9的IO
 4、注意事项
     无
+    
+1. Function description
+    1. After TIM2 CH1 CH2 CH3 CH4 reaches the CC value, correspondingly pull down the IO level of PC6, PC7, PC8, and PC9
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.26.2.0
+    Hardware environment: Developed based on N32G4XVL-STB V1.1
+3. Instructions for use
+    System Configuration;
+        1. Clock source:
+                    HSE=8M, PLL=144M, AHB=144M, APB1=36M, APB2=72M, TIM2 CLK=72M
+        2. Interruption:
+                    TIM2 compare interrupt is turned on, preemption priority is 0, subpriority 1
+        3. Port configuration:
+                    PC6 is selected as IO output
+                    PC7 is selected as IO output
+                    PC8 is selected as IO output
+                    PC9 is selected as IO output
+        4. TIM:
+                    TIM2 configures the comparison value of CH1, CH2, CH3, CH4, and turns on the comparison interrupt
+    Instructions:
+        1. After compiling, turn on the debug mode, and use an oscilloscope or logic analyzer to observe the waveforms of PC6, PC7, PC8, and PC9
+        2. After the timer enters the CC1 CC2 CC3 CC4 interrupt, it will correspondingly pull down the IO of PC6 PC7 PC8 PC9
+4. Matters needing attention
+    without

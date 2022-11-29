@@ -33,8 +33,8 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#ifndef __DRV_DAC__
-#define __DRV_DAC__
+#ifndef __DRV_DAC_H__
+#define __DRV_DAC_H__
 
 #include <rtthread.h>
 #include <rtdevice.h>
@@ -57,4 +57,4 @@ struct n32g45x_dac
 
 int rt_hw_dac_init(void);
 
-#endif
+#endif /* __DRV_DAC_H__ */

@@ -34,7 +34,6 @@
  */
 
 #include "drv_hwtimer.h"
-#include "rt_config.h"
 #include "n32g45x_rcc.h"
 
 #ifdef RT_USING_HWTIMER

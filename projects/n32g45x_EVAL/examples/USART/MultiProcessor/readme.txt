@@ -58,3 +58,66 @@ EXTI0_IRQHandler中断处理函数中(the ControlFlag = 0)，USARTz进入静默
 
 
 4、注意事项
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+    
+1. Function description
+
+    This test example demonstrates how to use the USART multi-processor mode. USARTy and USARTz can be USART1
+And USART2, USART3 and UART4 or UART6 and UART7.
+    First, set the addresses of USARTy and USARTz to 0x1 and 0x2 respectively. USARTy continues to USARTz
+Send character 0x33. USARTz receives 0x33 and flips the pins of LED1, LED2, and LED3.
+    Once the KEY1_INT_EXTI_LINE line detects a rising edge, an EXTI0 interrupt will be generated.
+In the EXTI0_IRQHandler interrupt processing function (the ControlFlag = 0), USARTz enters silence
+Mode, in silent mode, the LED pin stops toggling until the KEY1_INT_EXTI_LINE line is detected
+Rising edge (the ControlFlag = 1). In the EXTI0_IRQHandler interrupt handler function, USARTy
+Send address 0x102 to wake up USARTz. The LED pin restarts toggling.
+
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 144MHz
+    
+    The USARTy configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 9 data bits
+    -1 stop bit
+    -Parity control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Receiver and transmitter enable
+    
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> USART2_Rx.PA3
+    -USART1_Rx.PA10 <-------> USART2_Tx.PA2
+    or
+    -USART3_Tx.PB10 <-------> UART4_Rx.PC11
+    -USART3_Rx.PB11 <-------> UART4_Tx.PC10
+    or
+    -UART6_Tx.PE2 <-------> UART7_Rx.PC5
+    -UART6_Rx.PE3 <-------> UART7_Tx.PC4
+    
+    KEY1_INT_EXTI_LINE.PA0 <-------> WAKEUP_KEY
+    
+    LED1 <-------> PB5
+    LED2 <-------> PB4
+    LED3 <-------> PA8
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, observe whether LED1~3 are blinking
+    -Press the KEY button and observe whether LED1~3 stop flashing
+    -Press the KEY button again and observe whether LED1~3 resume flashing
+
+
+4. Matters needing attention
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

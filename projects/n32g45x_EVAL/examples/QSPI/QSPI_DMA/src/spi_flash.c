@@ -273,7 +273,7 @@ void QspiFlashChipErase(void)
 ================================================================================*/
 void QSPI_Test(void)
 {
-    uint32_t        i, temp;
+    unsigned int   i, temp;
     uint32_t        buf[4];
     static uint8_t  add;
     
@@ -341,9 +341,9 @@ void QSPI_Test(void)
             log_info(" data = 0x%08x \n", temp);      // byte print
         }
         QspiInit(QUAD_SPI_FORMAT_SEL, RX_ONLY, CTRL1_NDF_CNT);  
-        QspiSendWord(0xff);                                     
+        QspiSendWord(0xff);
         
-        m_delay_ms(5000);   
+        m_delay_ms(5000);
     }
     
 

@@ -36,7 +36,6 @@
 #define __SDIO_SDCARD_H__
 
 #include "n32g45x.h"
-//#include "test.h"
 
 typedef enum
 {

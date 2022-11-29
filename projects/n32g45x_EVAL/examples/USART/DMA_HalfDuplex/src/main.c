@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -59,10 +59,6 @@ uint8_t TxBuffer1[] = "USART Half Duplex: USARTy -> USARTz using HalfDuplex mode
 uint8_t TxBuffer2[] = "USART Half Duplex: USARTz -> USARTy using HalfDuplex mode";
 uint8_t RxBuffer1[TxBufferSize2];
 uint8_t RxBuffer2[TxBufferSize1];
-uint32_t NbrOfDataToRead1 = TxBufferSize2;
-uint32_t NbrOfDataToRead2 = TxBufferSize1;
-uint8_t TxCounter1 = 0, RxCounter1 = 0;
-uint8_t TxCounter2 = 0, RxCounter2 = 0;
 volatile TestStatus TransferStatus1 = FAILED, TransferStatus2 = FAILED;
 
 __IO uint8_t USARTy_Tx_Done;

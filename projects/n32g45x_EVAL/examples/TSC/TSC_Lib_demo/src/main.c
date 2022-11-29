@@ -272,7 +272,7 @@ int main(void)
         if (Flag_1s == 1)
         {
             Flag_1s = 0;
-            log_info("@@counter %d\r\n", time_cnt);
+            log_info("@@counter %d\r\n", (int)time_cnt);
             
             if (time_cnt++ >= 10)
             {

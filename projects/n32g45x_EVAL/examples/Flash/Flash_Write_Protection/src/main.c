@@ -84,7 +84,7 @@ int main(void)
         if (ProtectedPages != 0x0)
         {
             /* Restore write protected pages */
-            FLASH_EnWriteProtection(ProtectedPages)
+            FLASH_EnWriteProtection(ProtectedPages);
         }
         /* Generate System Reset to load the new option byte values */
         NVIC_SystemReset();

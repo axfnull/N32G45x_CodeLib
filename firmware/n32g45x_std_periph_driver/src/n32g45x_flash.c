@@ -28,7 +28,7 @@
 /**
  * @file n32g45x_flash.c
  * @author Nations
- * @version v1.0.2
+ * @version v1.0.3
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -408,7 +408,6 @@ FLASH_STS FLASH_EraseOB(void)
 FLASH_STS FLASH_ProgramWord(uint32_t Address, uint32_t Data)
 {
     FLASH_STS status  = FLASH_COMPL;
-    __IO uint32_t tmp = 0;
 
     /* Check the parameters */
     assert_param(IS_FLASH_ADDRESS(Address));

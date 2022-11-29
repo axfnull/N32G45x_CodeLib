@@ -33,7 +33,6 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 #include "drv_adc.h"
-#include "rt_config.h"
 #include "n32g45x.h"
 #include "drv_gpio.h"
 
@@ -43,7 +42,6 @@
     #error "Please define at least one RT_USING_ADCx"
     /* this driver can be disabled at menuconfig -> Hardware Drivers Config -> On-chip Peripheral Drivers -> Enable ADC */
 #endif
-
 
 static struct n32g45x_adc_config adc_config[] =
 {
@@ -82,6 +80,7 @@ static void n32g45x_adc_init(struct n32g45x_adc_config *config)
 {
     ADC_InitType ADC_InitStructure;
     /* ADC configuration ------------------------------------------------------*/
+    ADC_InitStructure.WorkMode       = ADC_WORKMODE_INDEPENDENT;
     ADC_InitStructure.MultiChEn      = DISABLE;
     ADC_InitStructure.ContinueConvEn = DISABLE;
     ADC_InitStructure.ExtTrigSelect  = ADC_EXT_TRIGCONV_NONE;
@@ -123,13 +122,14 @@ static rt_err_t n32g45x_adc_convert(struct rt_adc_device *device, rt_uint32_t ch
     
     ADC_ConfigRegularChannel((ADC_Module*)config->adc_periph, channel, 1, ADC_SAMP_TIME_239CYCLES5);
     
+    /* Start ADC Software Conversion */
     ADC_EnableSoftwareStartConv((ADC_Module*)config->adc_periph, ENABLE);
 
-    while(ADC_GetFlagStatus((ADC_Module*)config->adc_periph,ADC_FLAG_ENDC)==0)
+    while(ADC_GetFlagStatus((ADC_Module*)config->adc_periph, ADC_FLAG_ENDC)==0)
     {
     }
-    ADC_ClearFlag((ADC_Module*)config->adc_periph,ADC_FLAG_ENDC);
-    ADC_ClearFlag((ADC_Module*)config->adc_periph,ADC_FLAG_STR);
+    ADC_ClearFlag((ADC_Module*)config->adc_periph, ADC_FLAG_ENDC);
+    ADC_ClearFlag((ADC_Module*)config->adc_periph, ADC_FLAG_STR);
     *value=ADC_GetDat((ADC_Module*)config->adc_periph);
     
     return RT_EOK;
@@ -181,7 +181,6 @@ int rt_hw_adc_init(void)
                            adc_obj[i].config->name, &n32g45x_adc_ops, adc_obj[i].config);
     }
     return result;
-
 }
 
 INIT_DEVICE_EXPORT(rt_hw_adc_init);

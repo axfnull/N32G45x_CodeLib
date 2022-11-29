@@ -64,11 +64,6 @@ int main(void)
     DMA_Configuration();
 
     /* TIM1 DMA Transfer example -------------------------------------------------
-    TIM1CLK = SystemCoreClock, Prescaler = 0, TIM1 counter clock = SystemCoreClock
-    SystemCoreClock is set to 72 MHz for Low-density, Medium-density, High-density
-    and Connectivity line devices and to 24 MHz for Low-Density Value line and
-    Medium-Density Value line devices.
-
     The objective is to configure TIM1 channel 3 to generate complementary PWM
     signal with a frequency equal to 17.57 KHz:
      - TIM1_Period = (SystemCoreClock / 17570) - 1

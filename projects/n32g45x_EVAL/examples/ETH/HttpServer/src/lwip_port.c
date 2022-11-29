@@ -434,7 +434,7 @@ uint8_t lwip_port_init(void)
     gw.addr  = 0;
 #else  // !LWIP_DHCP
     IP4_ADDR(&ip, 10, 70, 54, 39);
-    IP4_ADDR(&msk, 255, 255, 255, 0);
+    IP4_ADDR(&msk, 255, 255, 0, 0);
     IP4_ADDR(&gw, 10, 70, 54, 10);
 #endif // LWIP_DHCP
 

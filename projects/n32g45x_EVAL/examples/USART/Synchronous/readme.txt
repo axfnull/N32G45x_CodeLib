@@ -66,3 +66,74 @@ RXDNE检测标志接收数据，将其存入RxBuffer2。
 
 
 4、注意事项
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+
+1. Function description
+
+    This test example demonstrates the basic communication between USARTy (synchronous mode) and SPIy by querying the detection identifier.
+USARTy and SPIy can be USART1 and SPI1, USART3 and SPI1 or USART2 and SPI2.
+    First, through the TXC detection flag, USARTy sends TxBuffer1 data to SPIy, and SPIy receives data,
+Then query the RNE detection flag, and store the received data in RxBuffer1.
+    Subsequently, SPIy sends TxBuffer2 data to USARTy by querying the TE detection flag. USARTy uses
+RXDNE detects the received data and stores it in RxBuffer2.
+    Finally, compare the two groups of receiving and sending data respectively, and store the comparison results in the TransferStatus1 variable
+And the TransferStatus2 variable.
+
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 144MHz
+    
+    The USART configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Parity control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Receiver and transmitter enable
+    -Clock enable
+    -Clock polarity: keep high when not sending out
+    -Clock phase: sample the first data on the second clock edge
+    -The last clock pulse: the clock pulse of the last data is output from CK
+    
+    The SPI configuration is as follows:
+    -Direction = "Two-wire two-way" mode
+    -Mode = slave mode
+    -Data size = 8-bit data frame
+    -CPOL = In idle state, the clock stays high
+    -CPHA = data sampling starts from the second clock edge
+    -NSS = Enable software management from the device
+    -1st bit = 1st bit is LSB
+    
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> SPI1_MOSI.PA7
+    -USART1_Rx.PA10 <-------> SPI1_MISO.PA6
+    -USART1_Clk.PA8 <-------> SPI1_SCK.PA5
+    or
+    -USART3_Tx.PB10 <-------> SPI1_MOSI.PA7
+    -USART3_Rx.PB11 <-------> SPI1_MISO.PA6
+    -USART3_Clk.PB12 <-------> SPI1_SCK.PA5
+    or
+    -USART2_Tx.PA2 <-------> SPI2_MOSI.PB15
+    -USART2_Rx.PA3 <-------> SPI2_MISO.PB14
+    -USART2_Clk.PA4 <-------> SPI2_SCK.PB13
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the variables TransferStatus1 and TransferStatus2 in turn, among them,
+      PASSED means the test passed, FAILED means the test is abnormal
+
+
+4. Matters needing attention
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

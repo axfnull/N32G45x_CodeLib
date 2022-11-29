@@ -123,7 +123,7 @@ void VS_Soft_Reset(void)
     while(VS_RD_Reg(SPI_MODE)!=0x0800)
     {
         VS_WR_Cmd(SPI_MODE,0x0804); //soft reset
-        delay_ms(2);//wait at least 1.35ms 
+        systick_delay_ms(2);//wait at least 1.35ms 
         if(retry++>100)break;
     }
     while(VS_DQ==0);//wait soft reset finish
@@ -133,7 +133,7 @@ void VS_Soft_Reset(void)
         VS_WR_Cmd(SPI_CLOCKF,0X9800);//set vs10xx clock
         if(retry++>100)break;
     }
-    delay_ms(20);
+    systick_delay_ms(20);
 } 
 
 /**
@@ -144,16 +144,16 @@ uint8_t VS_HD_Reset(void)
 {
     uint16_t retry=0;
     VS_RST = 0;
-    delay_ms(20);
+    systick_delay_ms(20);
     VS_XDCS = 1;
     VS_XCS = 1;
     VS_RST = 1;
     while(VS_DQ==0&&retry<200)//wait buf free
     {
         retry++;
-        delay_us(50);
+        systick_delay_us(50);
     };
-    delay_ms(20);
+    systick_delay_ms(20);
     if(retry>=200)
     {
         return 1;
@@ -186,7 +186,7 @@ void VS_Sine_Test(void)
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
-    delay_ms(100);
+    systick_delay_ms(100);
     VS_XDCS=1; 
 
     //exit sine test
@@ -199,7 +199,7 @@ void VS_Sine_Test(void)
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
-    delay_ms(100);
+    systick_delay_ms(100);
     VS_XDCS=1;
 
     //send sine test command:0x53 0xef 0x6e n 0x00 0x00 0x00 0x00
@@ -213,7 +213,7 @@ void VS_Sine_Test(void)
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
-    delay_ms(100);
+    systick_delay_ms(100);
     VS_XDCS=1;
     
     //exit sine test
@@ -226,7 +226,7 @@ void VS_Sine_Test(void)
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
-    delay_ms(100);
+    systick_delay_ms(100);
     VS_XDCS=1;
 }
 
@@ -249,7 +249,7 @@ uint16_t VS_Ram_Test(void)
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
     VS_SPI_ReadWriteByte(0x00);
-    delay_ms(100);  
+    systick_delay_ms(100);  
     VS_XDCS=1;
     return VS_RD_Reg(SPI_HDAT0);//if VS1003 get value is 0x807F£¬it means OK ;VS1053 is 0X83FF.
 }

@@ -123,8 +123,6 @@ void USB_Interrupts_Config(void)
  */
 void MIC_Config(void)
 {
-    delay_init();
-    
     /* INIT VS1053 */
     VS_Init();
     /* sine wave test */

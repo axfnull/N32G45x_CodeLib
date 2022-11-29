@@ -16,7 +16,7 @@
         IDE工具：KEIL MDK-ARM 5.26.2.0
     
     硬件环境：
-        开发板 N32G457-EVB
+        开发板 N32G457QEL-EVB v1.2
 
 
 3、使用说明
@@ -38,3 +38,38 @@
 
 4、注意事项
     无
+    
+    
+1. Function description
+    This routine provides a DMA MemtoMem mode usage for transferring data between FLASH and RAM.
+    We define a static array SRC_Const_Buffer. The data is stored in a read-only memory in FLASH.
+    Configure the DMA1_CH1 channel for transferring data to the RAM area DST_Buffer,
+    Enable DMA transfer completion interrupt, used to indicate that the transfer is complete,
+    
+    Wait for data transfer to complete and compare DST_Buffer with SRC_Const_Buffer.
+    Output the comparison result to the serial port.
+    
+2. Use environment
+    Software Development environment:
+	IDE tool: KEIL MDK-ARM 5.26.2.0
+    
+    Hardware environment:
+	Development board N32G457QEL-EVB v1.2
+
+3. Instructions for use    
+    1. Clock source: HSE+PLL
+    2. Master clock: 144MHz
+    3. DMA channel: DMA1_CH1
+    4. USART1 configuration:
+	TX --> PA9	50MHZ	AF_PP
+	Baud rate: 115200
+	Data bit: 8 bits
+	Stop bit: 1bit
+	No check
+    5. Test steps and phenomena
+	a. Compile download code reset run
+	b. View the printed information from the serial port and verify the result
+
+4. Matters needing attention
+	None
+	

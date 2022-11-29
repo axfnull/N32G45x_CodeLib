@@ -37,3 +37,43 @@
 
 
 4、注意事项
+
+1. Function description
+
+     This test example demonstrates the basic communication between the USARTx and the PC by querying the detection identification.
+     Redirect the printf function to USARTx, and use the printf function to output messages to the terminal.
+     USARTx can be USART1 or USART2.
+
+
+2. Use environment
+
+     Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+     Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+     The system clock configuration is as follows:
+     -Clock source = HSE + PLL
+     -System clock = 144MHz
+    
+     The USART configuration is as follows:
+     -Baud rate = 115200 baud
+     -Word length = 8 data bits
+     -1 stop bit
+     -Parity control disabled
+     -Hardware flow control disabled (RTS and CTS signals)
+     -Receiver and transmitter enable
+    
+     The USART pin connections are as follows:
+     -USART1_Tx.PA9
+     or
+     -USART2_Tx.PA2
+    
+     Test steps and phenomena:
+     -After the Demo is compiled in the KEIL environment, download it to the MCU
+     -Reset operation, view serial port print information
+
+
+4. Matters needing attention

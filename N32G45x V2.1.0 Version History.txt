@@ -1,0 +1,371 @@
+﻿Nationstech.N32G45x_Library.2.1.0版本：
+1.新增GCC下载配置文件和启动文件
+2.修改I2C模块复位函数，增加I2C3,I2C4复位判断
+3.flash模块 drvier文件删除已定义未使用变量
+4.GPIO模块 例程删除已定义未使用变量
+5.USART模块 例程删除已定义未使用变量
+6.ADC 例程优化
+      初始化函数增加在时钟配置上1M的初始化配置
+      驱动添加对ADC_CTRL3的CKMOD操作
+7.system_init RCC 配置寄存器2，配置寄存器3复位值修改
+8.exit deinit 复位值修改
+9.RCC  deinit 配置寄存器3复位值修改
+       例程优化
+10.QSPI DMA DEMO DMA通道函数修改
+11.RT_Thread
+    1)删除并重新添加RT_Thread的middlewares组件文件
+    2）删除并重新添加RT_Thread的demo，并更改启动方式为默认启动
+12.删除RT-Thread中drv_gpio.c中N32G45X_pin_irq_enable()函数里的IO配置
+13.修改n32g45x_wdog_control函数，不使用宏，定义两个变量存储RELV和PREDIV寄存器的值，删除RT-Thread的Demo的IAR工程里的dep文件
+14.修改RT_Thread_Finsh的Demo里的main.c文件，只创建led0线程
+15.删除DeviceDrivers文件夹里的inc和src两个文件夹，删除log文件采用RT自带的打印函数，删除bsp文件将板级初始化文件放入各个代码的board文件
+16.修改USB驱动usb_regs.h文件里的_BlocksOf32宏，wNBlocks << 11改为wNBlocks << 10
+17.修改了DMA中的SPI_RAM例程的readme,修改了I2C_SLAVE_INT例程中发送完成输出错误的发送数据量的错误
+18.NVIC:
+    更新IRQ_Mask例程按下按键打印停止，再按下无法继续打印问题
+19.iCache coreMark跑分优化
+20.修改n32g45x.h，以及QSPI驱动、demo，删除无效寄存器以及将QSPI_ENH_CTRL0,QSPI_STS中的无效位改为保留位
+21.修改SPI FLASH中的W25Q128擦除命令宏定义
+22.修复了QSPI DMA配置一个通道会复位另一个通道的BUG，将DMA配置函数改成两个函数分别配置Tx、Rx。
+23.TIM_Basic6的Demo PCLK1四分频
+24.修改QSPI_ClearITFLAG,QSPI_XIP_ClearITFLAG函数，去掉无用变量
+25.修改ETH模块httpserver例程，禁用DNS/UDP，子网掩码改为255.255.0.0，方便与PC直连
+26.修改I2C_10bit、I2C_Master_Int例程 main.c中的last_event数据类型，I2C_Slave_Int例程通讯字节数打印修正
+27.优化SDIO例程信息打印函数，延时函数
+28.USB修改Audio_Mic例程使用系统自带的延时，新增Audio_Speaker_VB1053B例程
+29.删除misc.c\misc.h文件中systick时钟源的HCLK_Div8选择
+30.USB demo 关闭ERROR和ESOF中断
+31.修改RT_Thread例程CAN回环模式为正常模式，修改扩展帧bug
+32.修改RTC唤醒例程SYSCLKConfig_STOP函数中Latency、pll、sysclk配置方式；修改EXTI_ClrITPendBit(EXTI_LINE20)位置
+33. TIMx_DCTRL后面的寄存器无法应用DMA Burst功能，修改相应代码
+34. 增加I2C MASTER INT demo中的错误中断服务函数
+35.将 SYSCLKConfig_STOP(uint32_t RCC_PLLMULL) 中的FLASH->AC 更换成变量操作
+
+Nationstech.N32G45x_Library.2.0.0版本：
+版本变更 1.3.0->2.0.0
+1.USART模块
+        USART初始化函数,波特率设置优化
+	
+Nationstech.N32G45x_Library.1.3.0版本：
+1、I2C模块
+        读单字节数据时的接收判断标志修改
+        初始化函数，时钟判断修改
+2、log.c
+        修改fputc函数发送完成判断标志
+   
+Nationstech.N32G45x_Library.1.2.0版本：
+1、 公共文件n32g45x.h修正了几个宏定义：
+        RCC_CFG_USBPRES_PLLDIV3、RCC_CFG_USBPRES_PLLDIV2、RCC_APB1ENR_OPAMPEN、
+        RCC_CSR_MMURSTF、FLASH_AC_LATENCY
+2、 公共文件log.c、log.h：
+        修改调试UART端口为PA9/PA10
+3、 SPI模块：
+        新增 SPI_RECORDER 例程
+4、 USB模块：
+        新增 Audio_Speaker 例程
+        修改USB例程挂起后进入低功耗模式
+5、 RCC模块，驱动n32g45x_rcc.c/h中：
+        更新RC_HSE_DISABLE宏定义名称
+        更新RCC_ADC1MCLK_SRC_HSE宏定义的值
+        删除RCC_ConfigEthClk相关定义
+6、 FLASH模块，驱动n32g45x_flash.c/h中：
+        更新FLASH_SetSMPSELStatus函数定义
+        更新FLASH_GetSMPSELStatus函数定义
+7、 ADC模块，驱动n32g45x_adc.c/h中：
+        修改了ADC_SetDifChsEnable函数名称；
+        修改了ADC 模式寄存器位定义名称；
+        增加对校准功能的函数重入性控制
+        温度测试公式修改
+8、 TSC模块：
+        驱动n32g45x_tsc.c/h优化，兼容触控算法库V1.0.4,
+        增加算法库使用例程
+9、RTC模块：
+        优化RTC TimeStamp例程
+10、SDIO模块，优化例程uSDCard：
+        增加中断回调函数
+        添加宏开关，切换单块读写和多块读写
+11、USART模块：
+        IrDA_Tx&Rx DEMO Receive测例和Transmit测例合并成Transmit_Receive测例
+        IrDA_Tx&Rx DEMO 新增LP_Transmit_Receive测例
+12、I2C模块：
+        优化驱动n32g45x_i2c.c/h，修改I2C初始化函数
+        优化所有DEMO，修改端口配置及应用流程
+13、OPA模块：
+        修正例程OpaAdByTim比较器和定时器输出不能自动恢复的问题
+14、DVP模块：
+        完善针对C++的文件头宏定义  #ifdef __cplusplus } #endif
+15、所有模块增加IAR工程示例
+16、新增RT-Thread系统例程
+17、USB模块：
+         新增 Audio_Mic 和 Virlural_Com_Port_loopback 例程
+         例程优化
+18、QSPI模块：
+         优化demo，在全功能板，运行异常问题。
+19、WWDG模块
+         例程优化
+20、RTC模块
+         例程优化		
+21、PWR模块
+         例程优化
+22、IWDG模块
+        例程优化
+23、bxCAN模块
+        例程优化
+		
+Nationstech.N32G45x_Library.1.1.1版本：
+1、驱动n32g45x_opamp.c(V1.0.2)，修改OPAMP_Init函数中错误使用SetBitMsk函数清除位的地方为调用ClrBit函数
+2、驱动n32g45x_tim.c(V1.0.2)，改变TIM_EnableOc1Preload函数为TIM_ConfigOc1Preload；增加TIM_GetAutoReload、TIM_GetCCENStatus函数；
+3、SPI 新增 SPI_FLASH_DMA 例程
+4、USB 新增 HID_Keyboard_TwoWay 和 Printer例程
+
+Nationstech.N32G45x_Library.1.1.0版本：
+1、示例代码Flash_Write_Protectio工程main.c(V1.0.1)，清除标志作了修改；
+2、示例代码Flash_Program工程main.c(V1.0.1)，错误处理作了修改；
+3、示例代码Flash_DMA_Program工程main.c(V1.0.1)，清除标志作了修改；
+4、驱动n32g45x_flash.c(V1.0.1)，擦写操作增加先清除标志，然后再进行后续操作；
+5、驱动n32g45x_adc.c(V1.0.1),
+   1)修改了void ADC_InitEx(ADC_Module* ADCx, ADC_InitTypeEx* ADC_InitStructEx)函数；
+   2)增加void ADC_SetDifChsEnable(ADC_Module* ADCx,uint32_t DifChs)；
+   3)修正ADC_CTRL3_CKMOD_AHB 和 ADC_CTRL3_CKMOD_PLL设定的错误
+   4)增加void ADC_ConfigClk(ADC_CTRL3_CKMOD ADC_ClkMode, uint32_t RCC_ADCHCLKPrescaler)函数，用来合并RCC对ADC时钟的配置
+6、驱动n32g45x_qspi.c，删除了data变量
+7、驱动n32g45x_comp.c，修改了FlagStatus COMP_GetOutStatus(COMPX COMPx)函数；
+8、驱动n32g45x_tim.h(V1.0.1)，TIM_BDTRInitType结构体修改注释；
+9、驱动n32g45x_rcc.h(V1.0.1)，
+   1)修改了TRNG1MCLK分频的宏定义；
+   2)修改了IS_RCC_TRNG1MCLKPRE(VAL)宏定义；
+10、驱动n32g45x_gpio.h(V1.0.1),修改了IS_GPIO_REMAP(REMAP)宏定义；
+11、驱动n32g45x_flash.h(V1.0.1),
+   1)修改了FLASH_ST枚举定义；
+   2)删除FLASH_INT_ECCERRIE宏定义；
+   3)修改IS_FLASH_INT(IT)宏定义；
+   4)删除FLASH_FLAG_ECCERR宏定义；
+   5)修改了IS_FLASH_CLEAR_FLAG宏定义；
+   6)修改IS_FLASH_GET_FLAG(FLAG宏定义；
+   7)增加了FLASH_STS_CLRFLAG宏定义；
+   8)增加了FLASH_ReadOutProtectionL2_ENABLE声明，去掉FLASH_ReadOutProtectionL2声明；
+12、驱动n32g45x_adc.h(V1.0.1)，
+   1)修改了ADC_DIFSEL_CHS_MASK宏定义名称；
+   2)删除ADC_DIFSEL_CHS_0宏定义；
+   3)增加ADC_CTRL3_PDRDY_MSK、ADC_CTRL3_RDY_MSK宏定义；
+   4)修改了ADC_CTRL3_RES枚举定义；
+   5)修改了ADC_InitTypeEx结构体；
+   6)增void ADC_SetDifChs(ADC_Module* ADCx,uint32_t DifChs)声明；
+   7)增void ADC_ConfigClk(ADC_CTRL3_CKMOD ADC_ClkMode, uint32_t RCC_ADCHCLKPrescaler)声明；
+13、驱动n32g45x_opamp.h，去除OPAMP_CS_VREFOPT_MASK宏定义；
+14、驱动n32g45x.h，
+    1)FLASH_Module结构体将ECCR变量改为RESERVED2；  
+    2)QSPI_Module结构体变量DAT32~DAT35改为RESERVED2~RESERVED5；
+    3)增加Bit definition for ADC_DIFSEL register宏定义；
+    4)增加Bit definition for ADC_CALFACT register宏定义；
+    5)增加Bit definition for ADC_CTRL3 register宏定义；
+    6)增加Bit definition for ADC_SAMPT3 register宏定义；
+    7)删除FLASH_AC_LATENCY_5、FLASH_STS_ECCERR、FLASH_CTRL_ECCERRITE、FLASH_ECCR_ECCLW_MSK、FLASH_ECCR_ECCHW_MSK宏定义；
+    8)修改了HSE_STARTUP_TIMEOUT宏定义值;
+    9)修改了CAN模块寄存器定义结构体;
+15、驱动n32g45x_comp.h
+    1)修改COMP_CTRL_BLKING_MASK宏定义；
+    2)修改COMP4_CTRL_OUTSEL_TIM8_IC1宏定义；
+    3)修改COMP5_CTRL_INPSEL_PC4、COMP5_CTRL_INPSEL_PC3宏定义；
+    4)修改COMP6_CTRL_INPSEL_PC4、COMP6_CTRL_INPSEL_PC3宏定义；
+    5)修改COMP3_CTRL_INMSEL_PE7、COMP3_CTRL_INMSEL_DAC1_PA4、COMP3_CTRL_INMSEL_DAC2_PA5、COMP3_CTRL_INMSEL_VERF1、COMP3_CTRL_INMSEL_VERF2宏定义；
+    6)修改COMP4_CTRL_INMSEL_PB13、COMP4_CTRL_INMSEL_DAC1_PA4、COMP4_CTRL_INMSEL_DAC2_PA5、COMP4_CTRL_INMSEL_VERF1、COMP4_CTRL_INMSEL_VERF2宏定义；
+    7)修改COMP5_CTRL_INMSEL_PD10、COMP5_CTRL_INMSEL_DAC1_PA4、COMP5_CTRL_INMSEL_DAC2_PA5、COMP5_CTRL_INMSEL_VERF1、COMP5_CTRL_INMSEL_VERF2宏定义；
+    8)修改COMP6_CTRL_INMSEL_PD8、COMP6_CTRL_INMSEL_DAC1_PA4、COMP6_CTRL_INMSEL_DAC2_PA5、COMP6_CTRL_INMSEL_VERF1、COMP6_CTRL_INMSEL_VERF2宏定义；
+    9)修改COMP_VREFSCL_VV2TRM_MSK宏定义；
+    10)修改COMP_VREFSCL_VV1TRM_MSK宏定义；
+16、DMA示例代码I2C_SRAM工程main.c(V1.0.1):
+    1)修改了RCC_Configuration函数;
+    2)修改了GPIO_Configuration函数里的I2C接口端口；
+17、修改CAN1对应GPIO remap定义；    
+18、USB新增 Mass_Stroage_DataFlash 例程
+19、USB新增 Virtural_Com_Port例程
+20、USB 新增 JoyStickMouse 例程
+21、I2C删除两个多余从设备的例程，同时调整例程为可在同一块板上做验证
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Nationstech.N32G45x_Library.2.1.0 version:
+1. Added GCC download configuration file and startup file
+2. Modify the reset function of the I2C module, adding the reset judgment for I2C3 and I2C4
+3. FLASH module driver deletes defined unused variables
+4. GPIO module demo deletes defined unused variables
+5.USART module demo deletes defined unused variables
+6.ADC demo optimization
+      The initialization function adds 1M initialization configuration on the clock configuration
+      Driver added CKMOD operation in ADC_CTRL3
+7. System_init RCC configure register 2 and configure register 3 reset value modify
+8. Change the exit deinit reset value
+9.RCC Deinit configure register 3 reset value modify
+      Demo optimization
+10. QSPI DMA DEMO DMA channel function modification
+11.RT_Thread
+      1) Remove and re-add RT_Thread middlewares component file
+      2) Delete and re-add RT_Thread demo, and change the startup mode to default startup
+12. Delete I/O configurations in the N32G45X_pin_irq_enable() function in drv_gpio.c of RT-Thread
+13. Modify the n32g45X_wdog_control function, without using macros, define two variables to store the RELV and PREDIV register values, delete rt-thread demo IAR project dep file
+14. Modify the main.c file in RT_Thread_Finsh Demo to create only led0 thread
+15. Delete the inc and src folders in the DeviceDrivers folder, delete the log file using RT's own printing function, delete the bsp file and put the board-level initialization file into the board file of each code
+16. Modify _BlocksOf32 macro in USB driver usb_regs.h file, wNBlocks << 11 change to wNBlocks << 10
+17. Modified the readme of SPI_RAM demo in DMA, and corrected the error of sending data amount in I2C_SLAVE_INT demo to complete output error
+18. NVIC: Update IRQ_Mask demo problem that press the key to stop printing, press again cannot continue printing
+19. ICache coreMark running score optimization
+20. Modify n32g45x.h, QSPI driver and demo, delete invalid registers and change invalid bits in QSPI_ENH_CTRL0 and QSPI_STS to reserved bits
+21. Modify the macro definition of W25Q128 erase command in SPI FLASH
+22. Fixed the QSPI DMA configuration of one channel will reset the other channel BUG, changed the DMA configuration function to two functions to configure Tx, Rx respectively.
+23. TIM_Basic6 Demo PCLK1 quad frequency
+24. Modify the QSPI_ClearITFLAG,QSPI_XIP_ClearITFLAG function to remove unnecessary variables
+25. Modify the HTTPServer demo of the ETH module to disable DNS/UDP and change the subnet mask to 255.255.0.0 for direct connection to the PC
+26. Modify I2C_10bit, I2C_Master_Int demo main.c last_event data type, I2C_Slave_Int demo communication bytes print correction
+27. Optimized SDIO demo information printing function and delay function
+28. Modifies the USB Audio_Mic demo using the built-in delay of the system. Add the Audio_Speaker_VB1053B demo 
+29. Delete the HCLK_Div8 option for systick clock source in misc.c\misc.h
+30. USB demo ERROR and ESOF interrupt closed
+31. modify the RT_Thread demo CAN loopback mode to normal mode and modify the extended frame bug
+32. modify the RTC wake-up demo Latency、pll、sysclk configuration mode of SYSCLKConfig_STOP function; modify the EXTI_ClrITPendBit(EXTI_LINE20) location
+33. TIMx_DCTRL‘s subsequent register cannot apply the DAM Burst function, and modify the corresponding code
+34. Added error interrupt service function in I2C MASTER INT demo.  
+35.replace FLASH->AC in SYSCLKConfig_STOP(uint32_t RCC_PLLMULL) with variable operation
+
+Nationstech.N32G45x_Library.2.0.0 version:
+Version change 1.3.0->2.0.0
+1. USART module
+      USART initialization function, baud rate Settings optimized
+	
+Nationstech.N32G45x_Library.1.3.0 version:
+1. I2C module
+      Changes to receive judgment flags when reading single-byte data
+      Initialization function, clock judge modification
+2. log.c
+      Modify the fputc function TX completion flag
+
+Nationstech.N32G45x_Library.1.2.0 version:
+1. Public file n32G45x.h fixes several macro definitions:
+        RCC_CFG_USBPRES_PLLDIV3、RCC_CFG_USBPRES_PLLDIV2、RCC_APB1ENR_OPAMPEN、
+        RCC_CSR_MMURSTF、FLASH_AC_LATENCY
+2. log.c, log.h:
+        Change the debugging UART port to PA9/PA10
+3. SPI module:
+        Added SPI_RECORDER demo
+4. USB module:
+        Added the Audio_Speaker demo
+        Modify USB demos to enter low power mode after suspension
+5, RCC module, drive n32g45x_rcc.c/h:
+        Updated the RC_HSE_DISABLE macro definition name
+        Update the value defined by the RCC_ADC1MCLK_SRC_HSE macro
+        Delete the RCC_ConfigEthClk definition
+6, FLASH module, driver n32g45x_flash.c/h:
+        Update the FLASH_SetSMPSELStatus function definition
+        Update the FLASH_GetSMPSELStatus function definition
+7, ADC module, drive n32g45x_adc.c/h
+        Changed the ADC_SetDifChsEnable function name;
+        Modified ADC mode register bit definition name;
+        Added functional reentrant control for calibration functions
+	   Modify the temperature test formula
+8. TSC Module:
+        Drive n32g45x_tsc.c/h optimization, compatible with touch algorithm library V1.0.4,
+        Add demos to the library of algorithms
+9. RTC Module:
+        Optimize the RTC TimeStamp demo
+10. SDIO module, optimization demo uSDCard:
+        Added interrupt callback function
+        Add macro switch to switch single block read/write and multiple block read/write
+11. USART module:
+        IrDA_Tx&Rx DEMO Receive and Transmit demo are merged into Transmit_Receive demo
+        IrDA_Tx&Rx DEMO add LP_Transmit_Receive test
+12. I2C module:
+        Optimize driver n32g45x_i2c.c /h, modify I2C initialization function
+        Optimized all DEMO, modified port configuration and application flow
+13. OPA Module:
+        Fixed an issue where the demo OpaAdByTim comparator and timer output could not automatically recover
+14. DVP module:
+     Improve the definition of header macros for C++  #ifdef __cplusplus } #endif
+15. Add IAR project examples for all modules
+16. Added RT-Thread system demo
+17. USB module:
+        Added Audio_Mic and Virlural_Com_Port_loopback demos
+        Demo optimization
+18. QSPI module:
+        Optimized demo, in the full function board, abnormal running problems.
+19. WWDG module
+        Demo optimization
+20. RTC module
+        Demo optimization		
+21. PWR module
+        Demo optimization
+22. IWDG module
+        Demo optimization
+23. BxCAN module
+        Demo optimization
+
+Nationstech.N32G45x_Library.1.1.1 version:
+1, driver n32g45x_opamp.c(V1.0.2), modify the OPAMP_Init function error using SetBitMsk function to clear bits of the place to call ClrBit function
+2, driver n32g45x_tim.c(V1.0.2), change TIM_EnableOc1Preload to TIM_ConfigOc1Preload;Add TIM_GetAutoReload and TIM_GetCCENStatus functions;
+3, SPI added SPI_FLASH_DMA demo
+4, USB added HID_Keyboard_TwoWay and Printer demos
+
+Nationstech.N32G45x_Library.1.1.0 version:
+1. Example code Flash_Write_Protectio project main.c(V1.0.1), the clear flag has been modified;
+2. Example code Flash_Program project main.c(V1.0.1), error handling has been modified;
+3. Example code Flash_DMA_Program project main.c(V1.0.1), the clear mark has been modified;
+4, Driver n32g45x_flash.c(V1.0.1), erase operation added first clear mark, and then subsequent operations;
+5, n32g45x_adc.c(V1.0.1),
+   1) Modify void ADC_InitEx(ADC_Module* ADCx, ADC_InitTypeEx* ADC_InitStructEx);
+   2) Add void ADC_SetDifChsEnable(ADC_Module* ADCx,uint32_t DifChs);
+   3) Correct ADC_CTRL3_CKMOD_AHB and ADC_CTRL3_CKMOD_PLL Settings error
+   4) Add void ADC_ConfigClk(ADC_CTRL3_CKMOD ADC_ClkMode, uint32_t RCC_ADCHCLKPrescaler) function to merge RCC configuration for ADC clock
+6, Driver n32g45x_qspi.c, delete data variable
+7, Driver n32g45x_comp.c, modify FlagStatus COMP_GetOutStatus(COMPX COMPX);
+8, Driver n32g45x_tim.h(V1.0.1), TIM_BDTRInitType structure modification annotation;
+9, Driver n32G45x_rcc.h(V1.0.1),
+   1) Modified the macro definition of TRNG1MCLK frequency division;
+   2) Modified IS_RCC_TRNG1MCLKPRE(VAL) macro definition;
+10, Driver n32g45x_gpio.h(V1.0.1), modified IS_GPIO_REMAP(REMAP) macro definition;
+11, Drive N32G45x_flash.h (V1.0.1),
+   1) Modified the FLASH_ST enumeration definition;
+   2) Delete FLASH_INT_ECCERRIE macro definition;
+   3) Modified IS_FLASH_INT(IT) macro definition;
+   4) Delete the FLASH_FLAG_ECCERR macro definition;
+   5) Modified IS_FLASH_CLEAR_FLAG macro definition;
+   6) Modified IS_FLASH_GET_FLAG(FLAG macro definition;
+   7) Added FLASH_STS_CLRFLAG macro definition;
+8) Add FLASH_ReadOutProtectionL2_ENABLE declaration and remove FLASH_ReadOutProtectionL2 declaration;
+12, Driver n32g45x_adc.h (V1.0.1),
+   1) Modified ADC_DIFSEL_CHS_MASK macro definition name;
+   2) Delete ADC_DIFSEL_CHS_0 macro definition;
+   3) Add ADC_CTRL3_PDRDY_MSK and ADC_CTRL3_RDY_MSK macro definitions;
+   4) Modified the ADC_CTRL3_RES enumeration definition;
+   5) Modified the ADC_InitTypeEx structure;
+   6) Add void ADC_SetDifChs(ADC_Module* ADCx,uint32_t DifChs);
+   7) Add void ADC_ConfigClk(ADC_CTRL3_CKMOD ADC_ClkMode, Uint32_t RCC_ADCHCLKPrescaler) declaration; 
+13, Driver n32g45x_opamp.h, remove OPAMP_CS_VREFOPT_MASK macro definition;
+14, Driver n32g45x.h,
+    1) The FLASH_Module structure changes the ECCR variable to RESERVED2;
+    2) Change the QSPI_Module variable DAT32~DAT35 to RESERVED2~RESERVED5;
+    3) Add Bit definition for ADC_DIFSEL register macro definition;
+    4) Add Bit definition for ADC_CALFACT register macro definition;
+    5) Add Bit definition for ADC_CTRL3 register macro definition;
+    6) Add Bit definition for ADC_SAMPT3 register macro definition;
+    7)Delete FLASH_AC_LATENCY_5, FLASH_STS_ECCERR, FLASH_CTRL_ECCERRITE, FLASH_ECCR_ECCLW_MSK, FLASH_ECCR_ECCHW_MSK macro definitions.
+    8) Changed the HSE_STARTUP_TIMEOUT macro definition value;
+    9) Modified CAN module register definition structure;
+15. Driver n32g45x_comp.h
+    1) Modify the macro definition of COMP_CTRL_BLKING_MASK;
+    2) Modify the macro definition of COMP4_CTRL_OUTSEL_TIM8_IC1;
+    3) Modify COMP5_CTRL_INPSEL_PC4 and COMP5_CTRL_INPSEL_PC3 macro definitions;
+    4) Modify COMP6_CTRL_INPSEL_PC4 and COMP6_CTRL_INPSEL_PC3 macro definitions;
+    5) Modify COMP3_CTRL_INMSEL_PE7, COMP3_CTRL_INMSEL_DAC1_PA4, COMP3_CTRL_INMSEL_DAC2_PA5, COMP3_CTRL_INMSEL_VERF1, and comp3_CTRl_INmsel_INmSE L_VERF2 macro definition;
+    6) Modify COMP4_CTRL_INMSEL_PB13, COMP4_CTRL_INMSEL_DAC1_PA4, COMP4_CTRL_INMSEL_DAC2_PA5, COMP4_CTRL_INMSEL_VERF1, and comp4_CTRl_INmsel_INMS EL_VERF2 macro definition;
+    7) Modify COMP5_CTRL_INMSEL_PD10, COMP5_CTRL_INMSEL_DAC1_PA4, COMP5_CTRL_INMSEL_DAC2_PA5, COMP5_CTRL_INMSEL_VERF1, COMP5_CTRL_INMSEL_INMS EL_VERF2 macro definition;
+    8) Modify COMP6_CTRL_INMSEL_PD8, COMP6_CTRL_INMSEL_DAC1_PA4, COMP6_CTRL_INMSEL_DAC2_PA5, COMP6_CTRL_INMSEL_VERF1, COMP6_CTRL_INMSEL_INMSE L_VERF2 macro definition;
+    9) Modify COMP_VREFSCL_VV2TRM_MSK macro definition;
+   10) Modify COMP_VREFSCL_VV1TRM_MSK macro definition;
+16. DMA demo I2C_SRAM project main.c(V1.0.1):
+    1) Modified the RCC_Configuration function;
+    2) Modified I2C interface port in GPIO_Configuration function;
+17. Modify the GPIO remap definition corresponding to CAN1;
+18. USB added Mass_Stroage_DataFlash demo
+19. USB added the Virtural_Com_Port demo
+20. USB added JoyStickMouse demo
+21. I2C deletes two demos of redundant slave devices and adjusts the demos so that they can be verified on the same board
+

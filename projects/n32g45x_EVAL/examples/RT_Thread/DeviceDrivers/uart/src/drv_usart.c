@@ -35,7 +35,6 @@
 
 #include <n32g45x.h>
 #include <drv_usart.h>
-#include "rt_config.h"
 #include "serial.h"
 
 #ifdef RT_USING_SERIAL
@@ -342,13 +341,13 @@ static rt_err_t n32g45x_configure(struct rt_serial_device *serial, struct serial
         case STOP_BITS_1:
             USART_InitStructure.StopBits = USART_STPB_1;
             break;
-        case STOP_BITS_0_5:
+        case STOP_BITS_2:
             USART_InitStructure.StopBits = USART_STPB_0_5;
             break;
-        case STOP_BITS_2:
+        case STOP_BITS_3:
             USART_InitStructure.StopBits = USART_STPB_2;
             break;
-        case STOP_BITS_1_5:
+        case STOP_BITS_4:
             USART_InitStructure.StopBits = USART_STPB_1_5;
             break;
         default:
@@ -528,4 +527,4 @@ int rt_hw_usart_init(void)
     return 0;
 }
 INIT_BOARD_EXPORT(rt_hw_usart_init);
-#endif
+#endif  /* RT_USING_SERIAL */

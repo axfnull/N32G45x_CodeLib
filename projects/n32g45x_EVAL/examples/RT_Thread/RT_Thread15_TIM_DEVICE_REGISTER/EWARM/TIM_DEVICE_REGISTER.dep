@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>3220701736</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_exti.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_gpio.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\misc.c</file>
+      <file>$PROJ_DIR$\..\readme.txt</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\hwtimer\hwtimer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\misc\pin.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\serial\serial.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_rcc.c</file>
+      <file>$PROJ_DIR$\..\app\src\n32g45x_it.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\libcpu\cortex-m4\context_iar.S</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\tim\src\drv_hwtimer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\src\completion.c</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\gpio\src\drv_gpio.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\system_n32g45x.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\libcpu\cortex-m4\cpuport.c</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\uart\src\drv_usart.c</file>
+      <file>$PROJ_DIR$\..\app\src\main.c</file>
+      <file>$PROJ_DIR$\..\bsp\src\board.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\thread.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\startup\startup_n32g45x_EWARM.s</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_usart.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\components.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\idle.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\mem.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_tim.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\irq.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\cpu.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\slab.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\timer.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\object.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\clock.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\device.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\kservice.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\signal.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\ipc.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\mempool.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\memheap.c</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\scheduler.c</file>
+      <file>$PROJ_DIR$\Debug\Exe\TIM_DEVICE_REGISTER.out</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_it.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\cpuport.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_n32g45x.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_gpio.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\board.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_hwtimer.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_usart.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\pin.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\completion.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\device.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\mem.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_rcc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\irq.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\hwtimer.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_gpio.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_tim.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_usart.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_exti.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\kservice.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\clock.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\serial.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\cpu.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\idle.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\components.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\ipc.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\misc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_exti.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_rcc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_tim.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_usart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\clock.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\startup_n32g45x_EWARM.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_gpio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\scheduler.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\context_iar.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\thread.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\mempool.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\system_n32g45x.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\cpuport.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_gpio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\object.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\completion.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\slab.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\memheap.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\serial.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\timer.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\board.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\signal.o</file>
+      <file>$PROJ_DIR$\Debug\Obj\n32g45x_it.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\hwtimer.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\pin.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_usart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\drv_hwtimer.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\TIM_DEVICE_REGISTER.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\mem.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\kservice.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\irq.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\mempool.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\object.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\thread.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\scheduler.pbi</file>
+      <file>$PROJ_DIR$\Debug\Exe\TIM_DEVICE_REGISTER.bin</file>
+      <file>$PROJ_DIR$\Debug\Obj\timer.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\components.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\device.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\idle.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\ipc.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\memheap.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\signal.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\slab.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\cpu.pbi</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_flash.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_opamp.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_rtc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_comp.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_usart.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core\core_cm4.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Config_Full.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ycheck.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_spi.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdint.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_eth.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_qspi.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\yvals.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_dac.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_i2c.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\n32g45x.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_bkp.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_tsc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdbool.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_dma.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\misc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\intrinsics.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core\cmsis_compiler.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_adc.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_crc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\n32g45x_conf.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_can.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core\cmsis_iccarm.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_dbg.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core\cmsis_version.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_exti.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_gpio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_iwdg.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core\mpu_armv7.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_pwr.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_dvp.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\system_n32g45x.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_rcc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_tim.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_wwdg.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\inc\n32g45x_sdio.h</file>
+      <file>$PROJ_DIR$\..\inc\main.h</file>
+      <file>$PROJ_DIR$\..\inc\n32g45x_it.h</file>
+      <file>$TOOLKIT_DIR$\lib\shb_l.a</file>
+      <file>$TOOLKIT_DIR$\config\linker\Nations\N32G45x\N32G457xE.icf</file>
+      <file>$TOOLKIT_DIR$\lib\rt7M_tl.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\DLib_Product_string.h</file>
+      <file>$TOOLKIT_DIR$\lib\dl7M_tlf.a</file>
+      <file>$TOOLKIT_DIR$\inc\c\string.h</file>
+      <file>$TOOLKIT_DIR$\lib\m7M_tls.a</file>
+      <file>$PROJ_DIR$\Debug\List\TIM_DEVICE_REGISTER.map</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\libc\libc_errno.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtthread.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtlibc.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtdef.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdarg.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtdebug.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtm.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtservice.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\time.h</file>
+      <file>$PROJ_DIR$\..\inc\rtconfig.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\libc\libc_stat.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ysizet.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\workqueue.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\completion.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\rtdevice.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\ringblk_buf.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\pipe.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\dataqueue.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\drivers\pin.h</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\gpio\inc\drv_gpio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rthw.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\drivers\serial.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\drivers\hwtimer.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\waitqueue.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\poll.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\include\ipc\ringbuffer.h</file>
+      <file>$PROJ_DIR$\..\src\board.c</file>
+      <file>$PROJ_DIR$\..\src\n32g45x_it.c</file>
+      <file>$PROJ_DIR$\..\src\main.c</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\tim\inc\drv_hwtimer.h</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\uart\inc\drv_usart.h</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\inc\bsp.h</file>
+      <file>$PROJ_DIR$\..\..\DeviceDrivers\inc\log.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\c\ystdio.h</file>
+      <file>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\include\rtdbg.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_exti.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 67</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 57</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 122 128 121 126 125 120 127 118 130 129 123 124 131 132 119 116 133 113 114 115 117 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 153 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 146 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 54</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128 131 118 130 123 129 124 125 120 122 126 127 121 132 119 116 133 113 114 115 117 153 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 147 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 127 148 114 150 124 153 115 157 121 154 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\misc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 66</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 63</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120 147 128 132 140 125 156 142 139 157 144 149 137 151 150 155 152 136 138 145 122 135 141 143 146 148 153 154 134 118 119 130 129 116 126 133 123 113 127 114 124 115 121 117 131</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 134 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 38 167</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\hwtimer\hwtimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 91</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 53</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 181 125 185 172 175 177 156 120 173 184 182 171 174 138 145 168 122 169 180 183 170 119 130 178 176 179 193 191 192 189 186 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 186 190</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\misc\pin.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 92</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 184 120 173 125 182 175 177 172 156 181 185 169 171 174 138 145 168 122 180 183 186 170 119 130 178 176 179 193 191 192 189 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 186 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 190</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\serial\serial.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 86</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 169 177 173 138 122 183 182 175 145 168 180 203 171 174 172 120 156 125 181 184 185 188 170 119 130 178 176 179 193 191 192 189 186 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 186 190 203</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_rcc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 127 128 120 122 126 121 118 130 129 123 124 131 119 116 133 113 114 115 117 132 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 153 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 153 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 115 157 121 154 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\app\src\n32g45x_it.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 90</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 39</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\libcpu\cortex-m4\context_iar.S</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 76</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\DeviceDrivers\tim\src\drv_hwtimer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 94</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 45</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128 182 177 176 183 171 120 169 118 114 119 180 133 117 132 190 174 170 125 130 178 181 184 185 122 116 113 115 153 188 173 175 172 138 156 145 168 179 193 191 192 189 186 152 140 144 136 129 126 123 127 124 121 131 197 149 142 135 137 141 139 143 151 146 147 148 150 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 197 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 186 190 188 128 118 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\components\drivers\src\completion.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 83</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 48</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 190 125 130 177 179 171 192 182 174 170 120 178 185 189 169 173 175 172 119 176 193 191 186 181 188 138 156 145 168 122 180 184 183</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 186 190</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\DeviceDrivers\gpio\src\drv_gpio.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 81</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120 182 174 128 180 169 132 140 113 144 116 115 170 177 176 186 152 136 119 133 114 117 125 183 187 188 118 122 130 129 126 123 127 124 121 131 171 178 181 184 185 147 149 138 156 145 142 135 137 141 139 143 151 146 148 150 153 157 154 155 134 173 175 172 168 179 193 191 192 189 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 147 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 127 148 114 150 124 153 115 157 121 154 117 155 131 134 187 186 169 177 173 171 170 178 176 179 168 175 174 182 193 181 185 180 191 184 192 183 189 190 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\system_n32g45x.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 79</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 128 124 129 118 130 123 131 125 120 122 126 127 121 132 119 116 133 113 114 115 117 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 153 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\libcpu\cortex-m4\cpuport.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 80</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 40</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 176 177 125 120 173 119 175 170 130 178 171 174 172 138 156 145 168 122 169 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\DeviceDrivers\uart\src\drv_usart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 93</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 46</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 122 128 185 169 138 137 173 152 136 150 184 182 145 135 120 151 155 189 132 140 144 149 156 125 142 139 147 157 181 198 118 119 130 141 143 146 148 153 154 134 175 177 172 168 179 171 180 183 129 116 126 133 123 113 127 114 124 115 121 117 131 188 174 170 178 176 193 191 192 186 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134 198 188 169 177 173 171 170 178 176 179 168 175 174 189 181 185 182 193 180 191 184 192 183 186 190</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\app\src\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 43</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\bsp\src\board.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 44</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\thread.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 101</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 77</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 145 170 169 174 177 125 168 171 138 122 188 173 175 172 120 156 119 130 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\startup\startup_n32g45x_EWARM.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 73</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_usart.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 56</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 117 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\components.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 105</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 64</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 169 171 120 177 119 174 170 130 173 175 172 138 156 145 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\idle.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 107</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 173 138 145 120 175 177 172 156 169 171 174 170 119 130 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\mem.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 96</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 50</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 120 175 177 172 169 173 156 171 174 138 145 168 122 188 170 119 130 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_tim.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 70</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 55</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 121 122 126 125 120 127 128 132 118 130 129 123 124 131 119 116 133 113 114 115 117 153 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 157 154 155 134</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 154 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 117 155 131 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\irq.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 98</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 52</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 175 172 177 156 120 173 138 145 169 171 174 170 119 130 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\cpu.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 112</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 61</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 170 174 120 177 176 125 130 171 119 188 173 175 172 138 156 145 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\slab.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 111</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 84</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 145 173 138 120 175 177 172 156 169 171 174 170 119 130 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\timer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 87</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 171 177 176 119 120 174 170 125 130 188 173 175 172 138 156 145 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\object.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 100</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 82</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 174 120 170 177 176 125 130 171 119 188 173 175 172 138 156 145 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\clock.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 59</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 169 171 120 177 119 174 170 130 173 175 172 138 156 145 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\device.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 106</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 174 125 138 177 145 120 171 172 156 173 175 170 119 130 168 122 169 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\kservice.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 97</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 58</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 171 177 176 120 174 170 125 119 188 173 175 172 138 156 145 130 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\signal.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 110</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 174 145 125 138 177 188 120 156 169 171 165 119 130 179 163 173 175 172 168 122 170 178 176</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 122 120 125 138 119 130 156 145 165 179 163 188 169 177 173 171 170 178 176 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\ipc.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 108</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 65</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 177 125 176 174 170 120 171 119 188 173 175 172 138 156 145 130 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\mempool.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 99</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 78</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120 125 175 177 172 156 173 138 145 169 171 174 170 119 130 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\memheap.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 109</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 85</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 120 125 175 177 172 156 173 138 145 169 171 174 170 119 130 168 122 188 178 176 179</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\middlewares\rt-thread\src\scheduler.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 102</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 75</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 173 138 177 176 145 175 172 120 156 125 188 171 174 170 119 130 178 179 169 168 122</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 188</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\TIM_DEVICE_REGISTER.out</name>
+      <outputs>
+        <tool>
+          <name>OBJCOPY</name>
+          <file> 103</file>
+        </tool>
+        <tool>
+          <name>ILINK</name>
+          <file> 167</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ILINK</name>
+          <file> 161 44 59 48 64 76 61 40 49 42 45 46 53 62 65 52 58 43 50 85 78 63 57 54 39 51 55 56 82 47 75 60 89 84 73 41 77 87 160 162 166 164</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\board.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 88</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 44</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 125 175 172 122 153 128 177 156 141 132 200 120 169 146 134 173 138 145 168 179 118 143 148 154 199 171 174 170 119 130 178 176 152 140 144 136 149 142 135 137 139 151 147 150 157 155 188 129 116 126 133 123 113 127 114 124 115 121 117 131 201 202</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 188 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 128 118 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134 199 200 201 202</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\n32g45x_it.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 90</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 39</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 115 116 128 122 120 113 119 133 114 117 132 158 118 125 130 129 126 123 127 124 121 131 152 140 144 136 149 138 156 145 142 135 137 141 139 143 151 146 147 148 150 153 157 154 155 134 159</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 159 128 118 122 120 125 138 119 130 156 145 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134 158</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\src\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 43</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 184 177 156 118 134 175 172 125 146 128 120 149 122 141 153 132 186 173 138 145 168 179 171 135 143 148 154 181 185 187 174 170 119 130 178 176 169 152 140 144 136 142 137 139 151 147 150 157 155 180 183 129 116 126 133 123 113 127 114 124 115 121 117 131 182 193 191 192 189 190</file>
+        </tool>
+        <tool>
+          <name>ICCARM</name>
+          <file> 169 177 173 171 170 178 122 120 125 138 119 130 156 145 176 179 168 175 174 187 128 118 144 136 142 135 149 152 132 140 137 129 141 116 139 126 143 133 151 123 146 113 147 127 148 114 150 124 153 115 157 121 154 117 155 131 134 186 182 193 181 185 180 191 184 192 183 189 190</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+</project>
+
+

@@ -50,3 +50,58 @@ USARTz可以是USART1和USART2、USART3和UART4或UART6和UART7。
 
 4、注意事项
     USART_Tx需外接上拉电阻。
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+    
+1. Function description
+    
+    This test example demonstrates the basic communication between USARTy and USARTz in half-duplex mode through DMA. USARTy and
+USARTz can be USART1 and USART2, USART3 and UART4 or UART6 and UART7.
+    First, DMA (interrupt) transfers TxBuffer1 data to the USARTy send data register, and then the data is sent
+To USARTz. USARTz receives data from DMA (interrupt) and stores it in RxBuffer2. Compare receiving and sending data,
+The comparison result is stored in the TransferStatus1 variable.
+    Subsequently, DMA (query) transfers the TxBuffer2 data to the USARTz send data register, and then the data is sent
+To USARTy. USARTy receives the data from DMA (inquiry) and stores it in RxBuffer1. Compare receiving and sending data,
+The comparison result is stored in the TransferStatus2 variable.
+
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 144MHz
+    
+    The USART configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Parity control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Transmitter enable or receiver enable
+    -Half-duplex mode enabled
+    -DMA transmit mode and DMA receive mode enable
+    
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> USART2_Tx.PA2
+    or
+    -USART3_Tx.PB10 <-------> UART4_Tx.PC10
+    or
+    -UART6_Tx.PE2 <-------> UART7_Tx.PC4
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the variables TransferStatus1 and TransferStatus2 in turn, among them,
+      PASSED means the test passed, FAILED means the test is abnormal
+
+
+4. Matters needing attention
+    USART_Tx requires an external pull-up resistor.
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

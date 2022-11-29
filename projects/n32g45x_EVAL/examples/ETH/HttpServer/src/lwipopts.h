@@ -47,8 +47,8 @@
 #define LWIP_SNMP LWIP_UDP
 // #define MIB2_STATS                 LWIP_SNMP
 
-#define LWIP_DNS            LWIP_UDP
-#define LWIP_MDNS_RESPONDER LWIP_UDP
+#define LWIP_DNS            0
+#define LWIP_MDNS_RESPONDER 0
 
 #define LWIP_NUM_NETIF_CLIENT_DATA (LWIP_MDNS_RESPONDER)
 
@@ -124,7 +124,7 @@
 #define TCP_MSS (1500 - 40) // TCP_MSS = (MTU - IP head size - TCP head size)
 
 /* ---------- DHCP options ---------- */
-#define LWIP_DHCP 1
+#define LWIP_DHCP 0
 
 /* ---------- UDP options ---------- */
 #define LWIP_UDP 1

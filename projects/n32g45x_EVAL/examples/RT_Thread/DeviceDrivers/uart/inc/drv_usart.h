@@ -33,8 +33,8 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#ifndef __USART_H__
-#define __USART_H__
+#ifndef __DRV_USART_H__
+#define __DRV_USART_H__
 
 #include <rthw.h>
 #include <rtthread.h>
@@ -42,6 +42,4 @@
 #define UART_ENABLE_IRQ(n)            NVIC_EnableIRQ((n))
 #define UART_DISABLE_IRQ(n)           NVIC_DisableIRQ((n))
 
-int rt_hw_usart_init(void);
-
-#endif
+#endif /* __DRV_USART_H__ */

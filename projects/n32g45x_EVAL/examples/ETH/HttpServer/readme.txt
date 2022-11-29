@@ -8,7 +8,7 @@
         IDE工具：KEIL MDK-ARM 5.26.2.0
 
         /* 硬件环境：工程对应的开发硬件平台 */
-        开发板：N32G457QE_EVB V1.0
+        开发板：N32G457QEL_EVB V1.2
 
 3、使用说明
 
@@ -27,3 +27,29 @@
 4、注意事项
     1.先插入网线，再将开发板复位运行。
     2. N32G457QE_EVB V1.0 开发板使用 ETH 需要将跳线 J16、J17连接起来。
+    
+    
+1. Function description
+    1. this routine for HTTP network test routine, with the development board as a simple web server, through the browser to access the reality of a simple web page
+
+2. Use environment
+    /* Software development environment: name and version of the software tool used in the current project */
+        IDE tool: KEIL MDK-ARM 5.26.2.0
+    /* Hardware environment: the corresponding development hardware platform */
+        Development board: N32G457QEL_EVB V1.2
+
+3. Instructions for use
+    /* Describe the related module configuration method; For example: clock, I/O, etc. */
+        SystemClock: 100 MHZ
+    /* Describes the test steps and symptoms of Demo */
+	1. Development board PA9,PA10 as the serial port output, serial port tool set baud rate to 115200
+	2. Connect the PC and development board to the same network segment.
+	2. After compiling, the downloaded program is reset and running.
+	3. The serial port tool will print information, including the IP address assigned to the development board.
+	4. Open the browser on the PC and enter the IP address.
+	5. The browser will display simple web page information.
+
+4. Matters needing attention
+	1. Insert the network cable and reset the development board.
+	2. N32G457QE_EVB V1.0 development board uses ETH to connect jumpers J16 and J17.
+	

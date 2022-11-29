@@ -50,3 +50,58 @@ USARTy。USARTy通过查询检查标志接收数据，存至RxBuffer1。
 
 
 4、注意事项
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+    
+1. Function description
+
+    This test case demonstrates the basic communication between USARTy and USARTz through DMA. USARTy and USARTz
+It can be USART1 and USART2, USART3 and UART4 or UART6 and UART7.
+    First, DMA transfers TxBuffer1 data to the USARTy send data register, and then the data is sent to
+USARTz. USARTz uses interrupts to receive data and store it in RxBuffer2.
+    At the same time, DMA transfers TxBuffer2 data to the USARTz send data register, and then the data is sent to
+USARTy. USARTy receives data by querying the check mark and storing it in RxBuffer1.
+    Finally, compare the two groups of receiving and sending data respectively, and store the comparison results in the TransferStatus1 variable
+And the TransferStatus2 variable.
+
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 144MHz
+    
+    The USART configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Parity control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Receiver and transmitter enable
+    -DMA transmission mode is enabled, DMA reception mode is disabled
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> USART2_Rx.PA3
+    -USART1_Rx.PA10 <-------> USART2_Tx.PA2
+    or
+    -USART3_Tx.PB10 <-------> UART4_Rx.PC11
+    -USART3_Rx.PB11 <-------> UART4_Tx.PC10
+    or
+    -UART6_Tx.PE2 <-------> UART7_Rx.PC5
+    -UART6_Rx.PE3 <-------> UART7_Tx.PC4
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the variables TransferStatus1 and TransferStatus2 in turn, among them,
+      PASSED means the test passed, FAILED means the test is abnormal
+
+
+4. Matters needing attention
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

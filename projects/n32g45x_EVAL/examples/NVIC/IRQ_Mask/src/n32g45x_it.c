@@ -28,7 +28,7 @@
 /**
  * @file n32g45x_it.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -113,27 +113,6 @@ void DebugMon_Handler(void)
  */
 void SysTick_Handler(void)
 {
-}
-
-extern uint8_t Key_Status;
-/**
- * @brief  This function handles EXTI Lines 0 interrupt request.
- */
-void EXTI0_IRQHandler(void)
-{
-    if (EXTI_GetITStatus(KEY_INPUT_EXTI_LINE) != RESET)
-    {
-        if (Key_Status == ENABLE)
-        {
-            Key_Status = DISABLE;
-        }
-        else
-        {
-            Key_Status = ENABLE;
-        }
-        /* Clears the SEL Button EXTI line pending bits. */
-        EXTI_ClrITPendBit(KEY_INPUT_EXTI_LINE);
-    }
 }
 
 /**

@@ -53,3 +53,61 @@ TransferStatus2变量。
 
 
 4、注意事项
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+
+1. Function description
+
+    This test example demonstrates the basic communication between USARTy and USARTz using hardware flow control. USARTy and
+USARTz can be USART1 and USART2.
+    First, USARTy uses CTS to send TxBuffer1 data, and USARTz uses RTS to receive data and save it to
+RxBuffer2; USARTz uses CTS to send TxBuffer2 data, and USARTy uses RTS to receive data and save it to
+RxBuffer1.
+    Subsequently, compare the received data with the sent data, and the comparison results are stored in TransferStatus1 and
+The TransferStatus2 variable.
+
+
+2. Use environment
+
+        Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+        Hardware environment: minimum system board N32G45XV-STB_V1.1
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 144MHz
+    
+    The USARTy configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Parity control disabled
+    -CTS and RTS hardware flow control enable
+    -Receiver and transmitter enable
+    
+    The USARTz configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Verification control disabled
+    -CTS and RTS hardware flow control enable
+    -Receiver and transmitter enable
+    
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> USART2_Rx.PA3
+    -USART1_Rx.PA10 <-------> USART2_Tx.PA2
+    -USART1_CTS.PA11 <-------> USART2_RTS.PA1
+    -USART1_RTS.PA12 <-------> USART2_CTS.PA0
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the variables TransferStatus1 and TransferStatus2, among them, PASSED means the test passed,
+      FAILED is test abnormal
+
+
+4. Matters needing attention
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

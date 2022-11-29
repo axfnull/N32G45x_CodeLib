@@ -73,44 +73,44 @@ int main(void)
     SetSysClockToHSI();
     DumpClock("HSI");
 
-    SetSysClockToHSE();
-    DumpClock("HSE");
+//    SetSysClockToHSE();
+//    DumpClock("HSE");
 
-    SetSysClockToPLL(24000000, SYSCLK_PLLSRC_HSI);
-    DumpClock("HSI->PLL, 24M");
+//    SetSysClockToPLL(24000000, SYSCLK_PLLSRC_HSI);
+//    DumpClock("HSI->PLL, 24M");
 
-    SetSysClockToPLL(36000000, SYSCLK_PLLSRC_HSI);
-    DumpClock("HSI->PLL, 36M");
+//    SetSysClockToPLL(36000000, SYSCLK_PLLSRC_HSI);
+//    DumpClock("HSI->PLL, 36M");
 
-    SetSysClockToPLL(72000000, SYSCLK_PLLSRC_HSI);
-    DumpClock("HSI->PLL, 72M");
+//    SetSysClockToPLL(72000000, SYSCLK_PLLSRC_HSI);
+//    DumpClock("HSI->PLL, 72M");
 
-    SetSysClockToPLL(96000000, SYSCLK_PLLSRC_HSI);
-    DumpClock("HSI->PLL, 96M");
+//    SetSysClockToPLL(96000000, SYSCLK_PLLSRC_HSI);
+//    DumpClock("HSI->PLL, 96M");
 
-    SetSysClockToPLL(24000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 24M");
+//    SetSysClockToPLL(24000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 24M");
 
-    SetSysClockToPLL(36000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 36M");
+//    SetSysClockToPLL(36000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 36M");
 
-    SetSysClockToPLL(48000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 48M");
+//    SetSysClockToPLL(48000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 48M");
 
-    SetSysClockToPLL(56000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 56M");
+//    SetSysClockToPLL(56000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 56M");
 
-    SetSysClockToPLL(72000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 72M");
+//    SetSysClockToPLL(72000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 72M");
 
-    SetSysClockToPLL(96000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 96M");
+//    SetSysClockToPLL(96000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 96M");
 
-    SetSysClockToPLL(128000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 128M");
+//    SetSysClockToPLL(128000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 128M");
 
-    SetSysClockToPLL(144000000, SYSCLK_PLLSRC_HSE);
-    DumpClock("HSE->PLL, 144M");
+//    SetSysClockToPLL(144000000, SYSCLK_PLLSRC_HSE);
+//    DumpClock("HSE->PLL, 144M");
 
     /* Enable Clock Security System(CSS): this will generate an NMI exception
        when HSE clock fails */

@@ -79,17 +79,6 @@ int main(void)
      - Gated mode is used, so start and stop of slave counter
        are controlled by the Master trigger output signal(TIM3 enable event).
 
-    * For Low-density, Medium-density, High-density and Connectivity line devices:
-      The TIMxCLK is fixed to 72 MHZ, the Prescaler is equal to 2 so the TIMx clock
-      counter is equal to 24 MHz.
-      The Three Timers are running at:
-      TIMx frequency = TIMx clock counter/ 2*(TIMx_Period + 1) = 162.1 KHz.
-
-    * For Low-Density Value line and Medium-Density Value line devices:
-      The TIMxCLK is fixed to 24 MHz, the Prescaler is equal to 2 so the TIMx clock
-      counter is equal to 8 MHz.
-      TIMx frequency = TIMx clock counter/ 2*(TIMx_Period + 1) = 54 KHz.
-
     The starts and stops of the TIM1 counters are controlled by the
     external trigger.
     The TIM3 starts and stops are controlled by the TIM1, and the TIM4

@@ -68,7 +68,6 @@ void (*pEpInt_OUT[7])(void) = {
  */
 void USB_Istr(void)
 {
-    uint32_t i=0;
     __IO uint32_t EP[8];
     
     wIstr = _GetISTR();
@@ -161,6 +160,7 @@ void USB_Istr(void)
 #endif
     /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
 #if (IMR_MSK & STS_ESOF)
+    uint32_t i=0;
     if (wIstr & STS_ESOF & wInterrupt_Mask)
     {
         /* clear ESOF flag in STS */

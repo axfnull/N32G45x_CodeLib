@@ -62,19 +62,11 @@ int main(void)
 
     /* -----------------------------------------------------------------------
     TIM3 Configuration: generate 4 PWM signals with 4 different duty cycles:
-    The TIM3CLK frequency is set to SystemCoreClock (Hz), to get TIM3 counter
-    clock at 24 MHz the Prescaler is computed as following:
-     - Prescaler = (TIM3CLK / TIM3 counter clock) - 1
-    SystemCoreClock is set to 72 MHz for Low-density, Medium-density, High-density
-    and Connectivity line devices and to 24 MHz for Low-Density Value line and
-    Medium-Density Value line devices
-
-    The TIM3 is running at 36 KHz: TIM3 Frequency = TIM3 counter clock/(AR + 1)
-                                                  = 24 MHz / 666 = 36 KHz
-    TIM3 Channel1 duty cycle = (TIM3_CCR1/ TIM3_ARR)* 100 = 50%
-    TIM3 Channel2 duty cycle = (TIM3_CCR2/ TIM3_ARR)* 100 = 37.5%
-    TIM3 Channel3 duty cycle = (TIM3_CCR3/ TIM3_ARR)* 100 = 25%
-    TIM3 Channel4 duty cycle = (TIM3_CCR4/ TIM3_ARR)* 100 = 12.5%
+    TIM3 Frequency = TIM3 counter clock/(AR + 1)
+    TIM3 Channel1 duty cycle = (TIM3_CCR1/ TIM3_ARR)* 100
+    TIM3 Channel2 duty cycle = (TIM3_CCR2/ TIM3_ARR)* 100
+    TIM3 Channel3 duty cycle = (TIM3_CCR3/ TIM3_ARR)* 100
+    TIM3 Channel4 duty cycle = (TIM3_CCR4/ TIM3_ARR)* 100
     ----------------------------------------------------------------------- */
     /* Compute the prescaler value */
     PrescalerValue = (uint16_t)(SystemCoreClock / 24000000) - 1;

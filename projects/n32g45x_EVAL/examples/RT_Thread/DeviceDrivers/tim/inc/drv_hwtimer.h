@@ -33,8 +33,8 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#ifndef __DRV_HWTIMER__
-#define __DRV_HWTIMER__
+#ifndef __DRV_HWTIMER_H__
+#define __DRV_HWTIMER_H__
 
 #include <rtthread.h>
 #include <rtdevice.h>
@@ -58,4 +58,4 @@ struct n32g45x_hwtimer
 
 int rt_hwtimer_init(void);
 
-#endif
+#endif /* __DRV_HWTIMER_H__ */

@@ -269,7 +269,7 @@ int main(void)
  */
 void I2C1_EV_IRQHandler(void)
 {
-    uint32_t last_event = 0;
+    unsigned int last_event = 0;
 
     last_event = I2C_GetLastEvent(I2C1);
     if ((last_event & I2C_ROLE_MASTER) == I2C_ROLE_MASTER) // master mode
@@ -360,6 +360,17 @@ void I2C1_EV_IRQHandler(void)
     }
 }
 
+/**
+ * @brief  i2c err Interrupt service function
+ */
+void I2C1_ER_IRQHandler(void)
+{  
+   if(I2C_GetFlag(I2C1, I2C_FLAG_ACKFAIL))
+   {
+      I2C_ClrFlag(I2C1, I2C_FLAG_ACKFAIL);
+      I2C_GenerateStop(I2C1, ENABLE); // Send I2C1 STOP Condition.
+   }
+}
 
 /**
  * @brief  Compares two buffers.

@@ -10,12 +10,13 @@
       <TargetName>N32G45x</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060183::V5.06 update 2 (build 183)::ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>N32G457QEL7</Device>
           <Vendor>Nationstech</Vendor>
-          <PackID>Nationstech.N32G45x_DFP.1.0.0</PackID>
+          <PackID>Nationstech.N32G45x_DFP.1.0.5</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x24000) IROM(0x08000000,0x80000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -183,6 +184,8 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
+            <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -323,6 +326,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -330,6 +334,7 @@
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
+            <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define>N32G45X, USE_STDPERIPH_DRIVER</Define>
@@ -347,6 +352,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
+            <ClangAsOpt>1</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -403,99 +409,14 @@
               <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\misc.c</FilePath>
             </File>
             <File>
-              <FileName>n32g45x_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_bkp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_bkp.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_crc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_dbg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_dbg.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_dma.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_dma.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_dvp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_dvp.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_exti.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_exti.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_flash.c</FilePath>
-            </File>
-            <File>
               <FileName>n32g45x_gpio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>n32g45x_i2c.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_iwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_iwdg.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_pwr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_pwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_qspi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_qspi.c</FilePath>
-            </File>
-            <File>
               <FileName>n32g45x_rcc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_rcc.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_sdio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_sdio.c</FilePath>
-            </File>
-            <File>
-              <FileName>n32g45x_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_spi.c</FilePath>
             </File>
             <File>
               <FileName>n32g45x_tim.c</FileName>
@@ -507,11 +428,6 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_usart.c</FilePath>
             </File>
-            <File>
-              <FileName>n32g45x_wwdg.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g45x_std_periph_driver\src\n32g45x_wwdg.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -521,6 +437,11 @@
               <FileName>log.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\bsp\src\log.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\bsp\src\delay.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -552,5 +473,11 @@
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

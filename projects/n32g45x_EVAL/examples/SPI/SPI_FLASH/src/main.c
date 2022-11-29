@@ -67,7 +67,7 @@ uint8_t Tx_Buffer[] = "N32G45X SPI Firmware Library Example: communication with 
 uint8_t Rx_Buffer[BufferSize];
 __IO uint8_t Index                  = 0x0;
 volatile TestStatus TransferStatus1 = FAILED, TransferStatus2 = PASSED;
-__IO uint32_t FlashID = 0;
+__IO unsigned int FlashID = 0;
 
 TestStatus Buffercmp(uint8_t* pBuffer1, uint8_t* pBuffer2, uint16_t BufferLength);
 

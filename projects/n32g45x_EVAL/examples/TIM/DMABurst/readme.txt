@@ -2,7 +2,7 @@
     1、TIM1 一个周期后同时改变周期和占空比
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：      基于N32G4XVL-STB V1.1开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -18,3 +18,24 @@
         2、TIM1的第一个周期结束后，后面的波形为DMA搬运的改变周期和占空比的波形
 4、注意事项
     无
+    
+1. Function description
+     1. TIM1 changes the period and duty cycle at the same time after one cycle
+2. Use environment
+     Software development environment: KEIL MDK-ARM V5.26.2.0
+     Hardware environment: Developed based on N32G4XVL-STB V1.1
+3. Instructions for use
+     System Configuration;
+         1. Clock source:
+                     HSE=8M, PLL=144M, AHB=144M, APB1=36M, APB2=72M, TIM1 CLK=144M, DMA CLK=144M
+         2. Port configuration:
+                     PA8 is selected as TIM1 CH1 output
+         3. TIM:
+                     TIM1 CH1 output, periodically trigger DMA burst transfer, load AR, REPCNT, CCDAT1 registers, change the duty cycle and cycle and repeat counter
+         4. DMA:
+                     The DMA1_CH5 channel in normal mode transfers 3 half-word SRC_Buffer[3] variables to the TIM1 DMA register
+     Instructions:
+         1. After compiling, turn on the debug mode, and use an oscilloscope or logic analyzer to observe the waveform of TIM1 CH1
+         2. After the first cycle of TIM1 is over, the following waveforms are the waveforms of changing cycle and duty cycle of DMA transport
+4. Matters needing attention
+     without

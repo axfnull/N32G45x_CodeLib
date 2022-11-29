@@ -28,7 +28,7 @@
 /**
  * @file main.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -50,10 +50,6 @@ typedef enum
 
 #define KEY_INPUT_PORT        GPIOA
 #define KEY_INPUT_PIN         GPIO_PIN_0
-#define KEY_INPUT_EXTI_LINE   EXTI_LINE0
-#define KEY_INPUT_PORT_SOURCE GPIOA_PORT_SOURCE
-#define KEY_INPUT_PIN_SOURCE  GPIO_PIN_SOURCE0
-#define KEY_INPUT_IRQn        EXTI0_IRQn
 
 #ifdef __cplusplus
 }

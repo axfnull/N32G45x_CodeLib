@@ -33,12 +33,12 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#ifndef N32G45X_SPI_H_INCLUDED
-#define N32G45X_SPI_H_INCLUDED
+#ifndef __DRV_SPI_H__
+#define __DRV_SPI_H__
 
 #include "n32g45x.h"
 #include "n32g45x_spi.h"
-#include "rt_config.h"
+#include "rtconfig.h"
 
 #ifdef RT_USING_SPI1
 #define SPI1_SCK_PIN             GPIO_PIN_5 /* PA.05 */
@@ -54,13 +54,13 @@
 
 #ifdef RT_USING_SPI2
 #define SPI2_SCK_PIN             GPIO_PIN_13 /* PB.13 */
-#define SPI2_SCK_GPIO_PORT       GPIOB      /* GPIOB */
+#define SPI2_SCK_GPIO_PORT       GPIOB       /* GPIOB */
 #define SPI2_SCK_GPIO_CLK        RCC_APB2_PERIPH_GPIOB
 #define SPI2_MISO_PIN            GPIO_PIN_14 /* PB.14 */
-#define SPI2_MISO_GPIO_PORT      GPIOB      /* GPIOB */
+#define SPI2_MISO_GPIO_PORT      GPIOB       /* GPIOB */
 #define SPI2_MISO_GPIO_CLK       RCC_APB2_PERIPH_GPIOB
 #define SPI2_MOSI_PIN            GPIO_PIN_15 /* PB.15 */
-#define SPI2_MOSI_GPIO_PORT      GPIOB      /* GPIOB */
+#define SPI2_MOSI_GPIO_PORT      GPIOB       /* GPIOB */
 #define SPI2_MOSI_GPIO_CLK       RCC_APB2_PERIPH_GPIOB
 #endif  /* RT_USING_SPI2 */
 
@@ -69,10 +69,10 @@
 #define SPI3_SCK_GPIO_PORT       GPIOB      /* GPIOB */
 #define SPI3_SCK_GPIO_CLK        RCC_APB2_PERIPH_GPIOB
 #define SPI3_MISO_PIN            GPIO_PIN_4 /* PB.04 */
-#define SPI3_MISO_GPIO_PORT      GPIOA      /* GPIOA */
+#define SPI3_MISO_GPIO_PORT      GPIOB      /* GPIOB */
 #define SPI3_MISO_GPIO_CLK       RCC_APB2_PERIPH_GPIOB
 #define SPI3_MOSI_PIN            GPIO_PIN_5 /* PB.05 */
-#define SPI3_MOSI_GPIO_PORT      GPIOA      /* GPIOA */
+#define SPI3_MOSI_GPIO_PORT      GPIOB      /* GPIOB */
 #define SPI3_MOSI_GPIO_CLK       RCC_APB2_PERIPH_GPIOB
 #endif  /* RT_USING_SPI3 */
 
@@ -84,4 +84,4 @@ struct w25qxx_spi_cs
 
 int rt_hw_spi_init(void);
 
-#endif // N32G45X_SPI_H_INCLUDED
+#endif /* __DRV_SPI_H__ */

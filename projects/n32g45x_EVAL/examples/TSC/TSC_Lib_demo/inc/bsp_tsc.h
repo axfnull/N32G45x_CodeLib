@@ -44,7 +44,7 @@ extern "C" {
 //#define THRE_DATA2PC_DEBUG  (1)   //触控数据输出到PC宏开关
 //#define THRE_TOUCHDATA_DEBUG  (1) //触控按键消息打印宏开关
 
-
+#define KEY_NUM             (2)
 #define TSC_USED_RAM_SIZE   (460 * 4)   //触控通道使用的RAM空间大小
 
 

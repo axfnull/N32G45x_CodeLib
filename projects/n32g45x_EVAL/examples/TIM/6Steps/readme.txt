@@ -2,7 +2,7 @@
     1、systick 100ms触发TIM1输出6步换相波形
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：      基于N32G4XVL-STB V1.1开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -25,3 +25,31 @@
         2、每隔100ms systick触发COM中断，在TIM的COM中断里面输出AB AC BC BA CA CB的6步换相波形
 4、注意事项
     无
+
+1. Function description
+    1. Systick 100ms triggers TIM1 to output 6-step commutation waveform
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.26.2.0
+    Hardware environment: Developed based on N32G4XVL-STB V1.1
+3. Instructions for use
+    System Configuration;
+        1. Clock source:
+                    HSE=8M, PLL=144M, AHB=144M, APB1=36M, APB2=72M, TIM1 CLK=144M
+        2. Interruption:
+                    TIM1 COM event interrupt is turned on, steal priority level 0, sub priority level 1
+                    Systick 100ms interrupt, priority 0
+        3. Port configuration:
+                    PA8 is selected as TIM1 CH1 output
+                    PA9 is selected as TIM1 CH2 output
+                    PA10 is selected as TIM1 CH3 output
+                    PB13 is selected as TIM1 CH1N output
+                    PB14 is selected as TIM1 CH2N output
+                    PB15 is selected as TIM1 CH3N output
+                    PB12 is selected as TIM1 Breakin input
+        4. TIM:
+                    TIM1 6-way complementary freeze output mode, no brake, COM interrupt
+    Instructions:
+        1. After compiling, turn on the debug mode, and use an oscilloscope or logic analyzer to observe the output waveform of TIM1
+        2. The COM interrupt is triggered by the systick every 100ms, and the 6-step commutation waveform of AB AC BC BA CA CB is output in the TIM COM interrupt
+4. Matters needing attention
+    without

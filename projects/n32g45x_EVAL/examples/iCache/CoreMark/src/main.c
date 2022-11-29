@@ -55,6 +55,8 @@ int main(void)
     USART_Config();
     printf("CoreMark Test Start\r\n");
 
+    /*disables the Prefetch Buffer.*/
+    FLASH_PrefetchBufSet(FLASH_PrefetchBuf_DIS);
     /* Enable iCache */
     FLASH_iCacheCmd(FLASH_iCache_EN);
 

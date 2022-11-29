@@ -64,6 +64,9 @@ void delay(vu32 nCount)
 void SYSCLKConfig_STOP(uint32_t RCC_PLLMULL)
 {
     __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+    uint32_t Flash_Latency_Temp=0;
+    uint32_t PLL_Temp=0;
+    uint32_t System_Temp=0;	
     /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration ---------------------------*/
     /* Enable HSE */
     RCC->CTRL |= ((uint32_t)RCC_CTRL_HSEEN);
@@ -86,17 +89,21 @@ void SYSCLKConfig_STOP(uint32_t RCC_PLLMULL)
        /* Enable Prefetch Buffer */
        FLASH->AC |= FLASH_AC_PRFTBFEN;
        /* Flash 2 wait state */
-       FLASH->AC &= (uint32_t)((uint32_t)~FLASH_AC_LATENCY);
-       FLASH->AC |= (uint32_t)FLASH_AC_LATENCY_4;
+       Flash_Latency_Temp = FLASH->AC;
+       Flash_Latency_Temp &= (uint32_t)((uint32_t)~FLASH_AC_LATENCY);
+       Flash_Latency_Temp |= (uint32_t)FLASH_AC_LATENCY_4;
+       FLASH->AC = Flash_Latency_Temp;
        /* HCLK = SYSCLK */
        RCC->CFG |= (uint32_t)RCC_CFG_AHBPRES_DIV1;
        /* PCLK2 = HCLK */
-       RCC->CFG |= (uint32_t)RCC_CFG_APB2PRES_DIV2; // RCC_CFG_APB2PRES_DIV1
+       RCC->CFG |= (uint32_t)RCC_CFG_APB2PRES_DIV2; 
        /* PCLK1 = HCLK */
-       RCC->CFG |= (uint32_t)RCC_CFG_APB1PRES_DIV4; // RCC_CFG_APB1PRES_DIV2
+       RCC->CFG |= (uint32_t)RCC_CFG_APB1PRES_DIV4; 
        /*  PLL configuration: PLLCLK = HSE * 18 = 144 MHz */
-       RCC->CFG &= (uint32_t)((uint32_t) ~(RCC_CFG_PLLSRC | RCC_CFG_PLLHSEPRES | RCC_CFG_PLLMULFCT));
-       RCC->CFG |= (uint32_t)(RCC_CFG_PLLSRC_HSE | RCC_PLLMULL);
+       PLL_Temp = RCC->CFG;
+       PLL_Temp &= (uint32_t)((uint32_t) ~(RCC_CFG_PLLSRC | RCC_CFG_PLLHSEPRES | RCC_CFG_PLLMULFCT));
+       PLL_Temp |= (uint32_t)(RCC_CFG_PLLSRC_HSE | RCC_PLLMULL);
+       RCC->CFG = PLL_Temp;
        /* Enable PLL */
        RCC->CTRL |= RCC_CTRL_PLLEN;
        /* Wait till PLL is ready */
@@ -104,8 +111,10 @@ void SYSCLKConfig_STOP(uint32_t RCC_PLLMULL)
        {
        }
        /* Select PLL as system clock source */
-       RCC->CFG &= (uint32_t)((uint32_t) ~(RCC_CFG_SCLKSW));
-       RCC->CFG |= (uint32_t)RCC_CFG_SCLKSW_PLL;
+       System_Temp = RCC->CFG;
+       System_Temp &= (uint32_t)((uint32_t) ~(RCC_CFG_SCLKSW));
+       System_Temp |= (uint32_t)RCC_CFG_SCLKSW_PLL;
+       RCC->CFG = System_Temp;
        /* Wait till PLL is used as system clock source */
        while ((RCC->CFG & (uint32_t)RCC_CFG_SCLKSTS) != (uint32_t)0x08)
        {

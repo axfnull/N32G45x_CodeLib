@@ -64,9 +64,6 @@ int main(void)
     1/ Generate 3 complementary PWM signals with 3 different duty cycles:
     TIM1CLK is fixed to SystemCoreClock, the TIM1 Prescaler is equal to 0 so the
     TIM1 counter clock used is SystemCoreClock.
-    * SystemCoreClock is set to 72 MHz for Low-density, Medium-density, High-density
-    and Connectivity line devices. For Low-Density Value line and Medium-Density
-    Value line devices, SystemCoreClock is set to 24 MHz.
 
     The objective is to generate PWM signal at 17.57 KHz:
     - TIM1_Period = (SystemCoreClock / 17570) - 1

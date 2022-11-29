@@ -7,14 +7,14 @@
 2、使用环境
 
     /* 硬件环境：工程对应的开发硬件平台 */
-        开发板：N32G45XV-STBV1.1
+        开发板：N32G45XVL-STBV1.1
         
 
 3、使用说明
     
     /* 描述相关模块配置方法；例如:时钟，I/O等 */
         USART：TX - PB4，波特率115200
-    GPIO：PA8 - 复用为MC0时钟输出
+	GPIO：PA8 - 复用为MC0时钟输出
 
     /* 描述Demo的测试步骤和现象 */
         1.编译后下载程序复位运行；
@@ -22,3 +22,29 @@
 
 
 4、注意事项
+
+
+1. Function description
+
+    /* Briefly describe the engineering function */
+        This example configures and demonstrates setting different system clocks, and uses MCO to output from PA8
+
+
+2. Use environment
+
+    /* Hardware environment: the development hardware platform corresponding to the project */
+        Development board: N32G45XVL-STBV1.1
+        
+
+3. Instructions for use
+    
+    /* Describe the configuration method of related modules; for example: clock, I/O, etc. */
+        USART: TX-PB4, baud rate 115200
+        GPIO: PA8-multiplexed as MC0 clock output
+
+    /* Describe the test steps and phenomena of Demo */
+        1. After compiling, download the program to reset and run;
+        2. Configure the system clock as HSI, HSE, and PLL, respectively, use the serial port to print out the current SYSCLK, HCLK, PCLK1, PCLK2 and other information, and use the PA8 multiplex pin to output the clock and view it with an oscilloscope;
+
+
+4. Matters needing attention

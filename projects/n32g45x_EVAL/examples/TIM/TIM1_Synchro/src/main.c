@@ -67,26 +67,18 @@ int main(void)
      - Gated mode is used, so starts and stops of slaves counters
        are controlled by the Master trigger output signal(update event).
 
-    o For Low-density, Medium-density, High-density and Connectivity line devices:
-    The TIMxCLK is fixed to 72 MHz, Prescaler = 0 so the TIM1 counter clock is 72 MHz.
-
     The Master Timer TIM1 is running at:
-    TIM1 frequency = TIM1 counter clock / (TIM1_Period + 1) = 281.250 KHz
-    and the duty cycle is equal to: TIM1_CCR1/(TIM1_ARR + 1) = 50%
+    TIM1 frequency = TIM1 counter clock / (TIM1_Period + 1)
+    and the duty cycle is equal to: TIM1_CCR1/(TIM1_ARR + 1)
 
     The TIM3 is running at:
-    (TIM1 frequency)/ ((TIM3 period +1)* (Repetition_Counter+1)) = 18.750 KHz and
-    a duty cycle equal to TIM3_CCR1/(TIM3_ARR + 1) = 33.3%
+    frequency equal to (TIM1 frequency)/ ((TIM3 period +1)* (Repetition_Counter+1))  and
+    a duty cycle equal to TIM3_CCR1/(TIM3_ARR + 1)
 
     The TIM4 is running at:
-    (TIM1 frequency)/ ((TIM4 period +1)* (Repetition_Counter+1)) = 28.125 KHz and
-    a duty cycle equal to TIM4_CCR1/(TIM4_ARR + 1) = 50%
+    frequency equal to (TIM1 frequency)/ ((TIM4 period +1)* (Repetition_Counter+1)) and
+    a duty cycle equal to TIM4_CCR1/(TIM4_ARR + 1) 
 
-    o For Low-Density Value line and Medium-Density Value line devices:
-    The TIMxCLK is fixed to 24 MHz, Prescaler = 0 so the TIM1 counter clock is 24 MHz.
-    TIM1 frequency = 93.75 KHz
-    TIM3 frequency = 6.25 KHz
-    TIM4 frequency = 9.375 KHz
     --------------------------------------------------------------------------- */
 
     /* TIM3 Peripheral Configuration ----------------------------------------*/

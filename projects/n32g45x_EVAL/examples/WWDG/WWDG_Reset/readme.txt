@@ -34,3 +34,40 @@
 4、注意事项
      无
 
+
+1. Function description
+    1. WWDG reset function.
+	
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.25.
+	
+    Hardware environment: 
+		1.Developed based on the evaluation board N32G45XRL-STB V1.1
+		2.MCU：N32G457REL7
+	
+3. Instructions for use
+    System Configuration;
+        1. WWDG clock source: PCLK1
+
+		2. window value: 42.77ms < N <58.25ms
+
+		3. Indicator light: PB5
+
+		4. Serial port configuration:
+
+			- Serial port: USART1 (TX: PA9 RX: PA10) :
+
+			- Data bit: 8
+
+			- Stop bit: 1
+
+			- Parity check: None
+
+			- Baud rate: 115200
+
+    Instructions:
+        1. After compiling under KEIL, it is burned to the evaluation board. After powering on, the indicator light controlled by PB5 keeps flashing. The window value is refreshed properly, and the code is running properly.
+		2. When the Delay(50) function parameter is changed to more than 50, the whole system will always be reset.
+		
+4. Matters needing attention
+    None.

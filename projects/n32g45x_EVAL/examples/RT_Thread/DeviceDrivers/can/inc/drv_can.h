@@ -45,10 +45,6 @@
 #define CAN_BAUDRATE_500K ((uint32_t)500)
 #define CAN_BAUDRATE_250K ((uint32_t)250)
 #define CAN_BAUDRATE_125K ((uint32_t)125)
-#define CAN_BAUDRATE_100K ((uint32_t)100)
-#define CAN_BAUDRATE_50K  ((uint32_t)50)
-#define CAN_BAUDRATE_20K  ((uint32_t)20)
-#define CAN_BAUDRATE_10K  ((uint32_t)10)
 #define CAN_BTR_CALCULATE ((uint32_t)6000)
 
 #define CAN_TX_MAILBOX0             (0x00000001U)  /*!< Tx Mailbox 0  */
@@ -60,7 +56,18 @@
 
 /* attention !!! baud calculation example: Tclk / ((ss + bs1 + bs2) * brp)  36 / ((1 + 8 + 3) * 3) = 1MHz*/
 
-
+/* CAN Error Code */
+#define CAN_ERROR_NONE      0x0000
+#define CAN_ERROR_EWG       0x0001
+#define CAN_ERROR_EPV       0x0002
+#define CAN_ERROR_BOF       0x0004
+#define CAN_ERROR_LEC       0x0008
+#define CAN_ERROR_STF       0x0010
+#define CAN_ERROR_FORM      0x0020
+#define CAN_ERROR_ACK       0x0040
+#define CAN_ERROR_BR        0x0080
+#define CAN_ERROR_BD        0x0100
+#define CAN_ERROR_CRC       0x0200
 
 
 /* Default config for serial_configure structure */

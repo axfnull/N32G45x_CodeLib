@@ -38,7 +38,6 @@
 #include <rthw.h>
 
 #include <drv_can.h>
-#include "rt_config.h"
 #include "n32g45x_can.h"
 #include "can.h"
 #include "drv_gpio.h"
@@ -102,47 +101,53 @@ static void bxcan_init(struct rt_can_device *can, struct can_configure *cfg)
     drv_can = (struct n32g45x_can *)can->parent.user_data;
     pbxcan  = drv_can->CanHandle.Instance;
     
-    uint32_t bps ;
-    
     /* CAN register init */
     CAN_DeInit(pbxcan);
     
     /* Struct init*/
     CAN_InitStruct(&CAN_InitStructure);
+    
+    CAN_InitStructure.TTCM          = DISABLE;
+    CAN_InitStructure.ABOM          = DISABLE;
+    CAN_InitStructure.AWKUM         = DISABLE;
+    CAN_InitStructure.NART          = DISABLE;
+    CAN_InitStructure.RFLM          = DISABLE;
+    CAN_InitStructure.TXFP          = ENABLE;
+
+    CAN_InitStructure.RSJW          = CAN_RSJW_1tq;
+    CAN_InitStructure.TBS1          = CAN_TBS1_3tq;
+    CAN_InitStructure.TBS2          = CAN_TBS2_2tq;
+    
     switch(cfg->baud_rate)
     {
         case CAN1MBaud:
-            bps = CAN_BAUDRATE_1M;
+            CAN_InitStructure.RSJW = CAN_RSJW_1tq;
+            CAN_InitStructure.TBS1 = CAN_TBS1_5tq;
+            CAN_InitStructure.TBS2 = CAN_TBS2_3tq;
+            CAN_InitStructure.BaudRatePrescaler = 4;
             break;
         case CAN500kBaud:
-            bps = CAN_BAUDRATE_500K;
+            CAN_InitStructure.RSJW = CAN_RSJW_1tq;
+            CAN_InitStructure.TBS1 = CAN_TBS1_14tq;
+            CAN_InitStructure.TBS2 = CAN_TBS2_3tq;
+            CAN_InitStructure.BaudRatePrescaler = 4;
             break;
         case CAN250kBaud:
-            bps = CAN_BAUDRATE_250K;
+            CAN_InitStructure.RSJW = CAN_RSJW_1tq;
+            CAN_InitStructure.TBS1 = CAN_TBS1_14tq;
+            CAN_InitStructure.TBS2 = CAN_TBS2_3tq;
+            CAN_InitStructure.BaudRatePrescaler = 8;
             break;
         case CAN125kBaud:
-            bps = CAN_BAUDRATE_125K;
+            CAN_InitStructure.RSJW = CAN_RSJW_2tq;
+            CAN_InitStructure.TBS1 = CAN_TBS1_13tq;
+            CAN_InitStructure.TBS2 = CAN_TBS2_4tq;
+            CAN_InitStructure.BaudRatePrescaler = 16;
             break;
-        case CAN100kBaud:
-            bps = CAN_BAUDRATE_100K;
-            break;
-        case CAN50kBaud:
-            bps = CAN_BAUDRATE_50K;
-            break;
-        case CAN20kBaud:
-            bps = CAN_BAUDRATE_20K;
-            break;
-        case CAN10kBaud:
-            bps = CAN_BAUDRATE_10K;
-            break;
-        
         default:
-            bps = CAN_BAUDRATE_100K;
             break;
     }
-    
-    CAN_InitStructure.BaudRatePrescaler = (uint32_t)(CAN_BTR_CALCULATE / bps);
-    
+
     switch (cfg->mode)
     {
         case RT_CAN_MODE_NORMAL:
@@ -162,24 +167,11 @@ static void bxcan_init(struct rt_can_device *can, struct can_configure *cfg)
             CAN_InitStructure.OperatingMode = CAN_Normal_Mode;
             break;
     }
-    
-    CAN_InitStructure.TTCM          = DISABLE;
-    CAN_InitStructure.ABOM          = DISABLE;
-    CAN_InitStructure.AWKUM         = DISABLE;
-    CAN_InitStructure.NART          = DISABLE;
-    CAN_InitStructure.RFLM          = DISABLE;
-    CAN_InitStructure.TXFP          = ENABLE;
-
-    CAN_InitStructure.RSJW          = CAN_RSJW_1tq;
-    CAN_InitStructure.TBS1          = CAN_TBS1_3tq;
-    CAN_InitStructure.TBS2          = CAN_TBS2_2tq;
-    
     /*Initializes the CAN */
     CAN_Init(pbxcan, &CAN_InitStructure);
     
     /* CAN filter init */
     setfilter(drv_can, &drv_can->FilterConfig);
-
 }
 
 #ifdef RT_USING_CAN1
@@ -423,11 +415,7 @@ static rt_err_t control(struct rt_can_device *can, int cmd, void *arg)
         if (argval != CAN1MBaud &&
                 argval != CAN500kBaud &&
                 argval != CAN250kBaud &&
-                argval != CAN125kBaud &&
-                argval != CAN100kBaud &&
-                argval != CAN50kBaud  &&
-                argval != CAN20kBaud  &&
-                argval != CAN10kBaud)
+                argval != CAN125kBaud )
         {
             return -RT_ERROR;
         }
@@ -478,17 +466,17 @@ static int sendmsg(struct rt_can_device *can, const void *buf, rt_uint32_t boxno
 
     if(pmsg->ide)
     {
+        TxMessage.IDE = CAN_Extended_Id;
         TxMessage.ExtId = pmsg->id;
         TxMessage.StdId = 0;
     }
     else
     {
+        TxMessage.IDE = CAN_Standard_Id;
         TxMessage.StdId = pmsg->id;
         TxMessage.ExtId = 0;
     }
-    
     TxMessage.RTR = pmsg->rtr;
-    TxMessage.IDE = pmsg->ide;
     TxMessage.DLC = pmsg->len;
     for( i=0; i<TxMessage.DLC ;i++)
     {
@@ -545,7 +533,14 @@ void n32g45x_can1_irqhandler(void *param)
         CAN_ReceiveMessage(CANx, CAN_FIFO0, &RxMessage);
         rt_hw_can_isr(&drv_can1.device, RT_CAN_EVENT_RX_IND);
         CAN_ClearINTPendingBit(CANx, CAN_INT_FMP0);
-        rt_kprintf("\r\nCan1 int RX happened!\r\n");
+        rt_kprintf("\r\nCan1 FIFO0 interrupt RX happened!\r\n");
+    }
+		else if (CAN_GetIntStatus(CANx, CAN_INT_FMP1)) 
+    {
+        CAN_ReceiveMessage(CANx, CAN_FIFO1, &RxMessage);
+        rt_hw_can_isr(&drv_can1.device, RT_CAN_EVENT_RX_IND);
+        CAN_ClearINTPendingBit(CANx, CAN_INT_FMP1);
+        rt_kprintf("\r\nCan1 FIFO1 interrupt RX happened!\r\n");
     }
     /* send data interrupt */
     else if (CAN_GetFlagSTS(CANx, CAN_FLAG_RQCPM0)) 
@@ -583,6 +578,123 @@ void USB_LP_CAN1_RX0_IRQHandler(void)
     rt_interrupt_leave();
 }
 
+void CAN1_RX1_IRQHandler(void)
+{
+    /* enter interrupt */
+    rt_interrupt_enter();
+
+	n32g45x_can1_irqhandler(&drv_can1.device);
+    
+    /* leave interrupt */
+    rt_interrupt_leave();
+}
+
+uint32_t n32g45x_can1_errhandler(CAN_HandleTypeDef *hcan)
+{
+	uint32_t errcode = CAN_ERROR_NONE;
+    if(CAN_GetIntStatus(hcan->Instance, CAN_INT_ERR))
+		{
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_EWG))
+			{
+				errcode |= CAN_ERROR_EWG;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_EPV))
+			{
+				errcode |= CAN_ERROR_EPV;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_BOF))
+			{
+				errcode |= CAN_ERROR_BOF;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_LEC))
+			{
+				switch((hcan->Instance->ESTS) & CAN_ESTS_LEC)
+				{
+					case(CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_STF;
+					break;
+					
+					case(CAN_ESTS_LEC_1):
+						errcode |= CAN_ERROR_FORM;
+					break;
+					
+					case(CAN_ESTS_LEC_1 | CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_ACK;
+					break;
+					
+					case(CAN_ESTS_LEC_2):
+						errcode |= CAN_ERROR_BR;
+					break;
+					
+					case(CAN_ESTS_LEC_2 | CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_BD;
+					break;
+					
+					case(CAN_ESTS_LEC_2 | CAN_ESTS_LEC_1):
+						errcode |= CAN_ERROR_CRC;
+					break;
+					
+					default:
+						break;
+				}
+				/* Clear Last error code Flag */
+				CAN_ClearINTPendingBit(hcan->Instance, CAN_INT_LEC);
+			}
+			CAN_ClearINTPendingBit(hcan->Instance, CAN_INT_ERR);
+		}
+	  return errcode;
+}
+
+void CAN1_SCE_IRQHandler(void)
+{
+	  rt_uint32_t errtype;
+	  CAN_HandleTypeDef *hcan;
+	
+	  hcan = &drv_can1.CanHandle;
+	  errtype = hcan->Instance->ESTS;
+	
+    /* enter interrupt */
+    rt_interrupt_enter();
+	
+	  n32g45x_can1_errhandler(hcan);
+	  
+	  switch((errtype & 0x70) >> 4)
+		{
+			case RT_CAN_BUS_BIT_PAD_ERR:
+				drv_can1.device.status.bitpaderrcnt++;
+			break;
+			
+			case RT_CAN_BUS_FORMAT_ERR:
+				drv_can1.device.status.formaterrcnt++;
+			break;
+			
+			case RT_CAN_BUS_ACK_ERR:
+				drv_can1.device.status.ackerrcnt++;
+			break;
+			
+			case RT_CAN_BUS_IMPLICIT_BIT_ERR:
+			case RT_CAN_BUS_EXPLICIT_BIT_ERR:
+					drv_can1.device.status.biterrcnt++;
+			break;
+			
+			case RT_CAN_BUS_CRC_ERR:
+					drv_can1.device.status.crcerrcnt++;
+			break;
+		}
+		
+		drv_can1.device.status.lasterrtype = errtype & 0x70;
+    drv_can1.device.status.rcverrcnt   = errtype >> 24;
+    drv_can1.device.status.snderrcnt   = (errtype >> 16 & 0xFF);
+    drv_can1.device.status.errcode     = errtype & 0x07;
+    hcan->Instance->MSTS |= CAN_MSTS_ERRINT;
+	
+    /* leave interrupt */
+    rt_interrupt_leave();
+}
+
 #endif /*RT_USING_CAN1*/
 
 #ifdef RT_USING_CAN2
@@ -599,7 +711,14 @@ void n32g45x_can2_irqhandler(void *param)
         CAN_ReceiveMessage(CANx, CAN_FIFO0, &RxMessage);
         rt_hw_can_isr(&drv_can2.device, RT_CAN_EVENT_RX_IND);
         CAN_ClearINTPendingBit(CANx, CAN_INT_FMP0);
-        rt_kprintf("\r\nCan2 int RX happened!\r\n");
+        rt_kprintf("\r\nCan2 FIFO0 interrupt RX happened!\r\n");
+    }
+    else if (CAN_GetIntStatus(CANx, CAN_INT_FMP1)) 
+    {
+        CAN_ReceiveMessage(CANx, CAN_FIFO1, &RxMessage);
+        rt_hw_can_isr(&drv_can2.device, RT_CAN_EVENT_RX_IND);
+        CAN_ClearINTPendingBit(CANx, CAN_INT_FMP1);
+        rt_kprintf("\r\nCan2 FIFO1 interrupt RX happened!\r\n");
     }
     /* send data interrupt */
     else if (CAN_GetFlagSTS(CANx, CAN_FLAG_RQCPM0)) 
@@ -637,11 +756,136 @@ void CAN2_RX0_IRQHandler(void)
     rt_interrupt_leave();
 }
 
+void CAN2_RX1_IRQHandler(void)
+{
+    /* enter interrupt */
+    rt_interrupt_enter();
+
+    n32g45x_can2_irqhandler(&drv_can2.device);
+		
+    /* leave interrupt */
+    rt_interrupt_leave();
+}
+
+uint32_t n32g45x_can2_errhandler(CAN_HandleTypeDef *hcan)
+{
+	  uint32_t errcode = CAN_ERROR_NONE;
+    if(CAN_GetIntStatus(hcan->Instance, CAN_INT_ERR))
+		{
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_EWG))
+			{
+				errcode |= CAN_ERROR_EWG;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_EPV))
+			{
+				errcode |= CAN_ERROR_EPV;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_BOF))
+			{
+				errcode |= CAN_ERROR_BOF;
+			}
+			
+			if(CAN_GetIntStatus(hcan->Instance, CAN_INT_LEC))
+			{
+				switch((hcan->Instance->ESTS) & CAN_ESTS_LEC)
+				{
+					case(CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_STF;
+					break;
+					
+					case(CAN_ESTS_LEC_1):
+						errcode |= CAN_ERROR_FORM;
+					break;
+					
+					case(CAN_ESTS_LEC_1 | CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_ACK;
+					break;
+					
+					case(CAN_ESTS_LEC_2):
+						errcode |= CAN_ERROR_BR;
+					break;
+					
+					case(CAN_ESTS_LEC_2 | CAN_ESTS_LEC_0):
+						errcode |= CAN_ERROR_BD;
+					break;
+					
+					case(CAN_ESTS_LEC_2 | CAN_ESTS_LEC_1):
+						errcode |= CAN_ERROR_CRC;
+					break;
+					
+					default:
+						break;
+				}
+				/* Clear Last error code Flag */
+				CAN_ClearINTPendingBit(hcan->Instance, CAN_INT_LEC);
+			}
+			CAN_ClearINTPendingBit(hcan->Instance, CAN_INT_ERR);
+		}
+	  return errcode;
+}
+
+void CAN2_SCE_IRQHandler(void)
+{
+	  rt_uint32_t errtype;
+	  CAN_HandleTypeDef *hcan;
+	
+	  hcan = &drv_can2.CanHandle;
+	  errtype = hcan->Instance->ESTS;
+	
+    /* enter interrupt */
+    rt_interrupt_enter();
+	
+	  n32g45x_can2_errhandler(hcan);
+	
+	  switch((errtype & 0x70) >> 4)
+		{
+			case RT_CAN_BUS_BIT_PAD_ERR:
+				drv_can2.device.status.bitpaderrcnt++;
+			break;
+			
+			case RT_CAN_BUS_FORMAT_ERR:
+				drv_can2.device.status.formaterrcnt++;
+			break;
+			
+			case RT_CAN_BUS_ACK_ERR:
+				drv_can2.device.status.ackerrcnt++;
+			break;
+			
+			case RT_CAN_BUS_IMPLICIT_BIT_ERR:
+			case RT_CAN_BUS_EXPLICIT_BIT_ERR:
+					drv_can2.device.status.biterrcnt++;
+			break;
+			
+			case RT_CAN_BUS_CRC_ERR:
+					drv_can2.device.status.crcerrcnt++;
+			break;
+		}
+		
+		drv_can2.device.status.lasterrtype = errtype & 0x70;
+    drv_can2.device.status.rcverrcnt   = errtype >> 24;
+    drv_can2.device.status.snderrcnt   = (errtype >> 16 & 0xFF);
+    drv_can2.device.status.errcode     = errtype & 0x07;
+    hcan->Instance->MSTS |= CAN_MSTS_ERRINT;
+	
+    /* leave interrupt */
+    rt_interrupt_leave();
+}
+
 #endif /*RT_USING_CAN2*/
+
+#define CANCONFIG \
+{\
+        CAN500kBaud,\
+        RT_CANMSG_BOX_SZ,\
+        RT_CANSND_BOX_NUM,\
+        RT_CAN_MODE_NORMAL,\
+};
 
 int rt_hw_can_init(void)
 {
-    struct can_configure config = CANDEFAULTCONFIG;
+    struct can_configure config = CANCONFIG;
     config.privmode = RT_CAN_MODE_NOPRIV;
     config.ticks = 50;
 #ifdef RT_CAN_USING_HDR

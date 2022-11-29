@@ -373,7 +373,7 @@ void Memset(void* s, uint8_t c, uint32_t count)
  */
 void I2C1_EV_IRQHandler(void)
 {
-    uint32_t last_event;
+    unsigned int last_event;
 
     last_event = I2C_GetLastEvent(I2C1);
     if ((last_event & I2C_ROLE_MASTER) == I2C_ROLE_MASTER) // master mode

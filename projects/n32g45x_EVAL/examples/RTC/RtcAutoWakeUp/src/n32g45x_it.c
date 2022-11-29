@@ -132,10 +132,10 @@ void DMA_IRQ_HANDLER(void)
  */
 void RTC_WKUP_IRQHandler(void)
 {
+    EXTI_ClrITPendBit(EXTI_LINE20);
     if (RTC_GetITStatus(RTC_INT_WUT) != RESET)
     {
         RTC_ClrIntPendingBit(RTC_INT_WUT);
-        EXTI_ClrITPendBit(EXTI_LINE20);
     }
 }
 /******************************************************************************/

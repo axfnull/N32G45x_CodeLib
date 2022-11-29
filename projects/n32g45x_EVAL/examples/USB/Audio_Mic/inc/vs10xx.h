@@ -101,7 +101,7 @@
 #define SPK_CTL_PIN         GPIO_PIN_12
 #define SPK_CTL_PORT        GPIOC
 
-__packed typedef struct 
+typedef struct 
 {
     uint8_t mvol;           //main vol,range:0~254
     uint8_t bflimit;        //bflimit,range:2~15(unit:10Hz)

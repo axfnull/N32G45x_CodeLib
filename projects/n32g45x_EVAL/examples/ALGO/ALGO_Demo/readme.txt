@@ -15,3 +15,27 @@
                
 4、注意事项
     无
+
+1. Function description
+
+     Encryption algorithm library API usage example
+
+
+2. Use environment
+
+     Software development environment: KEIL MDK-ARM V5.26
+     Development board: N32G457-EVB
+
+
+3. Instructions for use
+    
+     System Configuration:
+         1. Debug serial port: PA9--TX(115200)
+
+     Use method:
+         1. After compiling under KEIL, burn it to the EVB, power on
+         2. Output status information through the serial port
+
+
+4. Matters needing attention
+     None

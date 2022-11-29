@@ -215,12 +215,12 @@ void SD_Info(SD_CardInfo* info)
     log_debug("SD Card initialization success!\r\n");
     log_debug("*CardType            is: %d\r\n", info->CardType);
     log_debug("*CardCapacity        is: %lld\r\n", info->CardCapacity);
-    log_debug("*CardBlockSize       is: %d\r\n", info->CardBlockSize);
+    log_debug("*CardBlockSize       is: %d\r\n", (int)info->CardBlockSize);
     log_debug("*RCA                 is: %d\r\n", info->RCA);
     log_debug("*Manufacture(MID)    is: %d\r\n", info->SD_cid.ManufacturerID);
     log_debug("*OEM/Appli(OID)      is: %d\r\n", info->SD_cid.OEM_AppliID);
-    log_debug("*Product Name(PNM)   is: %d\r\n", info->SD_cid.ProdName1);
-    log_debug("*Serial Number(PSN)  is: %x\r\n", info->SD_cid.ProdSN);
+    log_debug("*Product Name(PNM)   is: %d\r\n", (int)info->SD_cid.ProdName1);
+    log_debug("*Serial Number(PSN)  is: %x\r\n", (unsigned int)info->SD_cid.ProdSN);
     log_debug("*Manu Date COde(MDT) is: %x\r\n", info->SD_cid.ManufactDate);
     log_debug("*Card SysSpecVersion is: %d\r\n", info->SD_csd.SysSpecVersion);
     log_debug("*Card MaxBusClkFrec  is: %d\r\n", info->SD_csd.MaxBusClkFrec);
@@ -239,7 +239,7 @@ void dataShow(uint8_t* pBuf, uint16_t DataSize)
         {
             log_debug("\r\n:");
         }
-        log_debug("  0x%0.2X", *(pBuf + i));
+        log_debug("  0x%02X", *(pBuf + i));
     }
     log_debug("\r\n\r\n");
 }

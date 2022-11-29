@@ -36,6 +36,14 @@
 #ifndef __DRV_I2C__
 #define __DRV_I2C__
 
+#include "i2c.h"
+
+struct rt_i2c_bus
+{
+    struct rt_i2c_bus_device parent;
+    rt_uint32_t i2c_periph;
+};
+
 int rt_hw_i2c_init(void);
 
-#endif
+#endif /* __DRV_I2C__ */

@@ -40,7 +40,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usb_type.h"
 
-#define USB_LOW_PWR_MGMT_SUPPORT
+//#define USB_LOW_PWR_MGMT_SUPPORT
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/

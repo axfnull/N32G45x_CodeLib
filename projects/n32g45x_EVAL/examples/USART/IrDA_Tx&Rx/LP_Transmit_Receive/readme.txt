@@ -42,3 +42,50 @@
 
 
 4、注意事项
+    使用PA9，PA10需要把开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+
+1. Function description
+
+    This test example demonstrates the basic communication between USARTy and USARTz to realize the infrared decoding function of serial IrDA low power consumption mode.
+    First, USARTy sends TxBuffer1 data to USARTz, and USARTz receives data through interrupt and stores it in RxBuffer1.
+    Subsequently, the received data is compared with the sent data, and the comparison result is stored in the TransferStatus variable.
+    
+
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: development board N32G457QEL_EVB_V1.1, IrDA receiver, transmitter
+
+
+3. Instructions for use
+    
+    The system clock configuration is as follows:
+    -Clock source = HSE + PLL
+    -System clock = 8MHz
+    
+    The USART configuration is as follows:
+    -Baud rate = 600 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Parity control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Receiver and transmitter enable
+    -IrDA mode enable
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> IrDA Transmitter
+    -USART2_Rx.PB5 <-------> IrDA Receiver
+
+    
+    -GPIO.PD3 <-------> 38kHz carrier
+
+    
+    Test steps and phenomena:
+    -After compiling in KEIL environment, download to MCU
+    -Run to view the variable TransferStatus, where PASSED means the test passed and FAILED means the test is abnormal
+
+
+4. Matters needing attention
+    To use PA9/PA10, disconnect the jumper cap of MCU_TX/MCU_RX on NS-LINK

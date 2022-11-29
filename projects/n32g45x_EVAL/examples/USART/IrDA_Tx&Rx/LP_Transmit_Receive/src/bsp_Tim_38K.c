@@ -75,7 +75,7 @@ void ADVANCE_TIM_Configuration(void)
     TIM_TimeBaseStructure.ClkDiv    = TIM_CLK_DIV1;
     TIM_TimeBaseStructure.CntMode   = TIM_CNT_MODE_UP;
     TIM_InitTimeBase(ADVANCE_TIM, &TIM_TimeBaseStructure);
-        TIM_EnableDma(ADVANCE_TIM, TIM_DMA_UPDATE, ENABLE);
+    TIM_EnableDma(ADVANCE_TIM, TIM_DMA_UPDATE, ENABLE);
 
     /* TIM1 enable counter */
     TIM_Enable(ADVANCE_TIM, ENABLE);

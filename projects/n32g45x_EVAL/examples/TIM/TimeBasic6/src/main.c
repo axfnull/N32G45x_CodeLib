@@ -101,7 +101,7 @@ void TIM_Configuration(void)
 void RCC_Configuration(void)
 {
     /* PCLK1 = HCLK/4 */
-    RCC_ConfigPclk1(RCC_HCLK_DIV1);
+    RCC_ConfigPclk1(RCC_HCLK_DIV4);
 
     /* TIM6 clock enable */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_TIM6, ENABLE);

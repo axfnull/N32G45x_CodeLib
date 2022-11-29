@@ -33,10 +33,10 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#include "drv_gpio.h"
-#include "rt_config.h"
-#include "pin.h"
 #include "n32g45x_gpio.h"
+#include "drv_gpio.h"
+#include "pin.h"
+#include "rthw.h"
 
 #ifdef RT_USING_PIN
 
@@ -447,7 +447,6 @@ static rt_err_t N32G45X_pin_irq_enable(struct rt_device *device, rt_base_t pin,
     const struct pin_irq_map *irqmap;
     rt_base_t level;
     rt_int32_t irqindex = -1;
-    GPIO_InitType GPIO_InitStructure;
     EXTI_InitType EXTI_InitStructure;
 
     index = get_pin(pin);
@@ -474,27 +473,21 @@ static rt_err_t N32G45X_pin_irq_enable(struct rt_device *device, rt_base_t pin,
 
         irqmap = &pin_irq_map[irqindex];
 
-        /* Configure GPIO_InitStructure */
-        GPIO_InitStruct(&GPIO_InitStructure);
-        GPIO_InitStructure.Pin = index->pin;        
-        GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
         switch (pin_irq_hdr_tab[irqindex].mode)
         {
         case PIN_IRQ_MODE_RISING:
-            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
             EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising;
             break;
+		
         case PIN_IRQ_MODE_FALLING:
-            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
             EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
             break;
+		
         case PIN_IRQ_MODE_RISING_FALLING:
-            GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
             EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
             break;
+		
         }
-        GPIO_InitPeripheral(index->gpio, &GPIO_InitStructure);
-
         RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
         /* configure EXTI line */
         GPIO_ConfigEXTILine(port2portsource(index->gpio), irqindex);
@@ -561,14 +554,6 @@ const static struct rt_pin_ops _N32G45X_pin_ops =
     N32G45X_pin_irq_enable,
 };
 
-//rt_inline void pin_irq_hdr(int irqno)
-//{
-//    if (pin_irq_hdr_tab[irqno].hdr)
-//    {
-//        pin_irq_hdr_tab[irqno].hdr(pin_irq_hdr_tab[irqno].args);
-//    }
-//}
-
 int rt_hw_pin_init(void)
 {
 #if defined(RCC_GPIOA_CLK_ENABLE)
@@ -602,6 +587,8 @@ int rt_hw_pin_init(void)
     return rt_device_pin_register("pin", &_N32G45X_pin_ops, RT_NULL);
 }
 
+INIT_BOARD_EXPORT(rt_hw_pin_init);
+
 rt_inline void pin_irq_hdr(int irqno)
 {
     if (pin_irq_hdr_tab[irqno].hdr)
@@ -616,7 +603,7 @@ void N32G45X_GPIO_EXTI_IRQHandler(rt_int8_t exti_line)
     {
         pin_irq_hdr(exti_line);
         EXTI_ClrITPendBit(1 << exti_line);
-    } 
+    }
 }
 
 void EXTI0_IRQHandler(void)

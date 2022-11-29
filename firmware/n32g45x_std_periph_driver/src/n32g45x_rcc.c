@@ -28,7 +28,7 @@
 /**
  * @file n32g45x_rcc.c
  * @author Nations
- * @version v1.0.1
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -225,7 +225,7 @@ void RCC_DeInit(void)
     RCC->CFG2 = 0x00003800;
 
     /* Reset CFG3 register */
-    RCC->CFG3 = 0x00003800;
+    RCC->CFG3 = 0x00003840;
 
     /* Disable all interrupts and clear pending bits  */
     RCC->CLKINT = 0x009F0000;

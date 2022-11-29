@@ -176,7 +176,7 @@ int main(void)
             CommTimeOut_CallBack(SLAVE_UNKNOW);
     }
         
-    log_info("tx finish,tx len = %d\r\n", rxDataNum);
+    log_info("tx finish,tx len = %d\r\n", rxDataNum-1);
     flag_slave_send_finish = 0;
         
     while (1)

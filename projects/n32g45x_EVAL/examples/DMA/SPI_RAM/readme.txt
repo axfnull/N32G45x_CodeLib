@@ -21,7 +21,7 @@
         IDE工具：KEIL MDK-ARM 5.26.2.0
     
     硬件环境：
-        开发板 N32G457-EVB
+        开发板 N32G45XRL-STB V1.1
 
 
 3、使用说明
@@ -64,3 +64,63 @@
         
 4、注意事项
     无
+    
+    
+1. Function description
+    This routine provides a DMA usage for transferring data between peripherals and RAM.
+             
+    Initialize CLOCK, GPIO, PERIPH, then enable DMA function of SPI, and then DMA
+    
+    First DMA1_CH5 transfers data from Slave_Tx_Buffer to the TX data register of SPI2 device, and the data stream is sent from SPI2 TX
+    To SPI1 RX, DMA1_CH4 transfers data from the RX register of SPI1 to master_rx_buffer.
+    
+    At the same time, DMA1_CH3 transfers data from Master_Tx_Buffer to the TX data register of SPI1 device, and the data stream is sent from SPI1 TX
+    To SPI2 RX, DMA1_CH2 transfers data from SPI2's RX register to Slave_rx_Buffer.
+    Wait for the DMA transfer to complete,
+    Compare data consistency between Slave_Rx_Buffer and Master_Tx_Buffer, output the comparison result to USART2(TX:PB4)
+    Compare Master_Rx_Buffer and Slave_Tx_Buffer to USART2(TX:PB4)
+    
+2. Use environment
+    Software Development environment:
+        IDE tool: KEIL MDK-ARM 5.26.2.0
+    
+    Hardware environment:
+        Development board N32G45XRL-STB V1.1
+3. Instructions for use    
+    1. Clock source: HSE+PLL
+    2. Master clock: 144MHz
+    3. DMA channels: DMA1_CH2, DMA1_CH3, DMA1_CH4, DMA1_CH5
+    4. SPI1 configuration:
+	SCK   -->  PA5          50MHz，AF_PP
+	MISO  -->  PA6          50MHz，IN_FLOATING
+	MOSI  -->  PA7          50MHz，AF_PP
+	Full duplex
+	Main mode
+	8 bit transmission
+	Polarity: start at low/second edge
+	Piece of software to choose
+	Big end in front MSB
+    
+    5. SPI2 Configuration:
+	SCK   -->  PB13         50MHz，IN_FLOATING
+	MISO  -->  PB14         50MHz，AF_PP
+	MOSI  -->  PB15         50MHz，IN_FLOATING
+	Full duplex
+	From the pattern
+	8 bit transmission
+	Polarity: start at low/second edge
+	Piece of software to choose
+	Big end in front MSB
+    
+    6. USART1 configuration:
+	TX  -->  PA9            50MHz，AF_PP
+	Baud rate: 115200
+	Data bit: 8 bits
+	Stop bit: 1bit
+	No check
+    7. Test steps and phenomena
+	a. Compile download code reset run
+	b. View the printed information from the serial port and verify the result
+        
+4. Matters needing attention
+    None

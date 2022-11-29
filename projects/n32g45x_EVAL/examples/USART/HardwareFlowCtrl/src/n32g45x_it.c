@@ -28,7 +28,7 @@
 /**
  * @file n32g45x_it.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -38,7 +38,6 @@
  * @{
  */
 
-extern __IO uint32_t CurrDataCounterEnd;
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Exceptions Handlers                         */

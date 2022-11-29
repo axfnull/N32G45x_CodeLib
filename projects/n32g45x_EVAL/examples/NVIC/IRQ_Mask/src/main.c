@@ -28,11 +28,12 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.1
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 #include "main.h"
+#include "delay.h"
 #include <stdio.h>
 
 /**
@@ -40,14 +41,11 @@
  */
 
 
-
-
-
 uint8_t Key_Status = DISABLE;
 
 void TIM_Config(void);
-void KeyInputExtiInit(GPIO_Module* GPIOx, uint16_t Pin);
-
+void KeyInputInit(GPIO_Module* GPIOx, uint16_t Pin);
+void KeyScan(GPIO_Module* GPIOx, uint16_t Pin);
 
 /**
  * @brief  Main program.
@@ -58,7 +56,7 @@ int main(void)
     log_init();
     log_info("NVIC IRQ Mask \r\n");
 
-    KeyInputExtiInit(KEY_INPUT_PORT, KEY_INPUT_PIN);
+    KeyInputInit(KEY_INPUT_PORT, KEY_INPUT_PIN);
     /* TIM configuration -------------------------------------------------------*/
     TIM_Config();
 
@@ -66,6 +64,7 @@ int main(void)
     {
         while (Key_Status == DISABLE)
         {
+            KeyScan(KEY_INPUT_PORT, KEY_INPUT_PIN);
         }
         log_info("Disable irq \r\n");
         /* This instruction raises the execution priority to 0. This prevents all
@@ -75,6 +74,7 @@ int main(void)
 
         while (Key_Status == ENABLE)
         {
+            KeyScan(KEY_INPUT_PORT, KEY_INPUT_PIN);
         }
         log_info("enable irq \r\n");
         /* This instruction will allow all exceptions with configurable priority to
@@ -136,11 +136,9 @@ void TIM_Config(void)
  * @param GPIOx x can be A to G to select the GPIO port.
  * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
  */
-void KeyInputExtiInit(GPIO_Module* GPIOx, uint16_t Pin)
+void KeyInputInit(GPIO_Module* GPIOx, uint16_t Pin)
 {
     GPIO_InitType GPIO_InitStructure;
-    EXTI_InitType EXTI_InitStructure;
-    NVIC_InitType NVIC_InitStructure;
 
     /* Check the parameters */
     assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
@@ -150,27 +148,45 @@ void KeyInputExtiInit(GPIO_Module* GPIOx, uint16_t Pin)
 
     /*Configure the GPIO pin as input floating*/
     GPIO_InitStructure.Pin        = Pin;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_InitPeripheral(GPIOx, &GPIO_InitStructure);
 
-    /*Configure key EXTI Line to key input Pin*/
-    GPIO_ConfigEXTILine(KEY_INPUT_PORT_SOURCE, KEY_INPUT_PIN_SOURCE);
-
-    /*Configure key EXTI line*/
-    EXTI_InitStructure.EXTI_Line    = KEY_INPUT_EXTI_LINE;
-    EXTI_InitStructure.EXTI_Mode    = EXTI_Mode_Interrupt;
-    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; // EXTI_Trigger_Rising;
-    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
-    EXTI_InitPeripheral(&EXTI_InitStructure);
-
-    /*Set key input interrupt priority*/
-    NVIC_InitStructure.NVIC_IRQChannel                   = KEY_INPUT_IRQn;
-    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x05;
-    NVIC_InitStructure.NVIC_IRQChannelSubPriority        = 0x0F;
-    NVIC_InitStructure.NVIC_IRQChannelCmd                = ENABLE;
-    NVIC_Init(&NVIC_InitStructure);
 }
+
+/**
+ * @brief  Scan key.
+ * @param GPIOx x can be A to G to select the GPIO port.
+ * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
+ */
+void KeyScan(GPIO_Module* GPIOx, uint16_t Pin)
+{
+    static uint8_t key_press_flag = 0;
+
+    if(GPIO_ReadInputDataBit(GPIOx, Pin) == 1){
+        systick_delay_ms(100);
+        if(GPIO_ReadInputDataBit(GPIOx, Pin) == 1){
+            key_press_flag = 1;
+        }
+        if(key_press_flag == 1){
+            if(GPIO_ReadInputDataBit(GPIOx, Pin) == 0){
+                systick_delay_ms(100);
+                if(GPIO_ReadInputDataBit(GPIOx, Pin) == 0){
+                    key_press_flag = 0;
+                    if (Key_Status == ENABLE)
+                    {
+                        Key_Status = DISABLE;
+                    }
+                    else
+                    {
+                        Key_Status = ENABLE;
+                    }
+                }
+            }                
+        }
+    } 
+}
+
 /**
  * @}
  */

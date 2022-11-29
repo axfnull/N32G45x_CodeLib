@@ -5,11 +5,9 @@
 2、使用环境
 
     软件开发环境：KEIL MDK-ARM V5.25
-
-        硬件环境：
+	硬件环境：
         1、基于评估板N32G45XR-STB V1.1开发
-        2、MCU：N32G4FRREL7
-
+        2、MCU：N32G457REL7
 
 3、使用说明
     
@@ -23,12 +21,45 @@
                             - 奇偶校验：无
                             - 波特率： 115200 
 
-
     使用方法：
-        在KEIL下编译后烧录到评估板，上电，串口按照闹钟设定时间(默认1min)进行打印输出。
+        编译后烧录到评估板，上电，串口按照闹钟设定时间(默认1min)进行打印输出。
         设置#define RTC_ALARM_TEST_TYPE RTC_ALARM_TEST_TYPE_OUTPUT，编译后烧录到评估板，
         此时会切换到闹钟输出，在PC13口会出现翻转电平。
 
 
 4、注意事项
     无
+	
+
+1. Function description
+
+	1. Trigger the alarm interrupt by setting the alarm time.
+	2. Configure I/O output through the alarm flag
+
+2. Use environment
+
+	Software development environment: KEIL MDK-ARM V5.25
+	Hardware environment:
+		1. based on the evaluation board N32G45XR-STB V1.1 development
+		2. MCU: N32G457REL7
+
+3. Instructions for use
+
+	System configuration:
+
+		1. RTC clock source: LSE
+		2. alarm IO output: PC13
+		3. Serial port configuration:
+
+							- Serial port: USART1 (TX: PA9 RX: PA10) :
+							- Data bit: 8
+							- Stop bit: 1
+							- Parity check: None
+							- Baud rate: 115200
+
+	Instructions:
+		After compiling, it is burned to the evaluation board, powered on, and the serial port prints the output according to the time set by the alarm clock (1 minute by default).
+		When set "#define RTC_ALARM_TEST_TYPE RTC_ALARM_TEST_TYPE_OUTPUT", at this time, the alarm clock output will be switched, and the flipped level will appear at port PC13.
+
+4. Matters needing attention
+	None

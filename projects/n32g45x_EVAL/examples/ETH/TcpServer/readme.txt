@@ -8,7 +8,7 @@
         IDE工具：KEIL MDK-ARM 5.26.2.0
 
         /* 硬件环境：工程对应的开发硬件平台 */
-        开发板：N32G457QE_EVB V1.0
+        开发板：N32G457QEL_EVB V1.2
 
 3、使用说明
 
@@ -28,3 +28,30 @@
     1.先插入网线，再将开发板复位运行。
     2.电脑主机和开发板在同一网段。
     3. N32G457QE_EVB V1.0 开发板使用 ETH 需要将跳线 J16、J17连接起来。
+    
+    
+1. Function description
+    1. This routine is a TCP network test routine, using the development board as a simple TCP server.
+
+2. Use environment
+    /* Software development environment: name and version of the software tool used in the current project */
+        IDE tool: KEIL MDK-ARM 5.26.2.0
+    /* Hardware environment: the corresponding development hardware platform */
+        Development board: N32G457QEL_EVB V1.2
+
+3. Instructions for use
+    /* Describe the related module configuration method; For example: clock, I/O, etc. */
+        SystemClock: 100 MHZ
+    /* Describes the test steps and symptoms of Demo */
+	1. Connect the serial port module to PA9 and PA10.
+	2. Connect the network cable.
+	3. Run the USR-TCP232-Test software and connect the serial port.
+	4. Power on the development board and print the IP address and port number of the TCPserver.
+	5. Use USR-TCP232-Test to select TCPClient on the right. Server IP address and Port Number Enter the IP address and port number printed on the serial port.
+	6. Send information. After receiving the information, the development board will return the information and print it in the software.
+
+4. Matters needing attention
+	1. Insert the network cable and reset the development board.
+	2. The PC host and development board are on the same network segment.
+	3. N32G457QE_EVB V1.0 development board uses ETH to connect jumpers J16 and J17.
+	

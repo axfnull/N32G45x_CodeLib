@@ -343,8 +343,6 @@ void RTC_PrescalerConfig(void)
  */
 void RTC_CLKSourceConfig(RTC_CLK_SRC_TYPE Clk_Src_Type, bool Is_First_Cfg_RCC, bool Is_Rst_Bkp)
 {
-    assert_param(IS_CLKSRC_VALUE(ClkSrc));
-    assert_param(IS_FLCFG_VALUE(FirstLastCfg));
     /* Enable the PWR clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_PWR | RCC_APB1_PERIPH_BKP, ENABLE);
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);

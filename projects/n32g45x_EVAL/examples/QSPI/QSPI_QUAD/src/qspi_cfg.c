@@ -171,13 +171,7 @@ void QspiInit(QSPI_FORMAT_SEL qspi_format_sel, QSPI_DATA_DIR data_dir, uint16_t 
             QSPI_InitStruct.RXFT                 = QSPI_RXFT_TFI_0; //receive fifo threshold
              
             QSPI_InitStruct.ENHANCED_CLK_STRETCH_EN = QSPI_ENH_CTRL0_CLK_STRETCH_EN; //enable stretch
-            QSPI_InitStruct.ENHANCED_XIP_CT_EN      = QSPI_ENH_CTRL0_XIP_CT_EN; //enable continuous transfer in XIP mode
-            QSPI_InitStruct.ENHANCED_XIP_INST_EN    = QSPI_ENH_CTRL0_XIP_INST_EN; //enable XIP instruction
-            QSPI_InitStruct.ENHANCED_XIP_DFS_HC     = QSPI_ENH_CTRL0_XIP_DFS_HC; //Fix DFS for XIP transfer
-            QSPI_InitStruct.ENHANCED_ADDR_LEN       = QSPI_ENH_CTRL0_ADDR_LEN_24_BIT; //length of address to transmit
-            QSPI_InitStruct.ENHANCED_INST_L         = QSPI_ENH_CTRL0_INST_L_8_LINE; //instruction length
-            QSPI_InitStruct.ENHANCED_WAIT_CYCLES    = QSPI_ENH_CTRL0_WAIT_8CYCLES; //wait cycles of dummy
-            
+
             QSPI_InitStruct.XIP_MBL         = QSPI_XIP_CTRL_XIP_MBL_LEN_8_BIT; //XIP mode bits length
             QSPI_InitStruct.XIP_CT_EN       = QSPI_XIP_CTRL_XIP_CT_EN; //enable continuous transfer in XIP mode
             QSPI_InitStruct.XIP_INST_EN     = QSPI_XIP_CTRL_XIP_INST_EN; //enable XIP instruction

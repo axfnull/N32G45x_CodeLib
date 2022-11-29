@@ -8,7 +8,7 @@
         IDE工具：KEIL MDK-ARM 5.26.2.0
     
     硬件环境：
-        开发板 N32G457-EVB
+        开发板 N32G457QE-EVB
 
 
 3、使用说明
@@ -35,3 +35,41 @@
 
 4、注意事项
     无
+
+1. Function description
+
+     This example demonstrates the read and write operations of the I2C module as the master device.
+
+2. Use environment
+
+     Software development environment:
+         IDE tool: KEIL MDK-ARM 5.26.2.0
+    
+     Hardware environment:
+         Development board N32G457QE-EVB
+
+
+3. Instructions for use
+    
+     1. Clock source: HSE+PLL
+     2. Main clock: 144MHz
+     3. I2C1 configuration:
+             SCL --> PB8 50MHz, AF_OP
+             SDA --> PB9 50MHz, AF_OP
+             ADDR: 0x30(7bit)
+             CLOCK: 100KHz
+            
+     4. USART1 configuration:
+             TX --> PA9 50MHz, AF_PP
+             Baud rate: 115200
+             Data bit: 8bit
+             Stop bit: 1bit
+             No verification
+
+     5. Test steps and phenomena
+         a, connect the I2C slave device
+         b, compile and download the code, reset and run
+         c, view the print information from the serial port and verify the result
+
+4. Matters needing attention
+     without

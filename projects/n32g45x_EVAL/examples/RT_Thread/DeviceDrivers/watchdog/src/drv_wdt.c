@@ -11,7 +11,6 @@
  
 #include <rtthread.h>
 #include <rthw.h>
-#include "rt_config.h"
 #include "watchdog.h"
 #include "n32g45x_wwdg.h"
 
@@ -81,19 +80,20 @@ static rt_err_t n32g45x_wdog_refresh(rt_watchdog_t *wdt)
  *
  *
  */
-#define WDT_RELOAD_SECOND       ((IWDG->RELV * LsiFreq) / IWDG->PREDIV)
 static rt_err_t n32g45x_wdog_control(rt_watchdog_t *wdt, int cmd, void *args)
 {
     RT_ASSERT(wdt != NULL);
 
     uint16_t reload_value;
     static rt_tick_t last_tick = 0;
+    uint32_t Relv_value = IWDG->RELV;
+    uint32_t Prediv = IWDG->PREDIV;
 
     switch (cmd)
     {
         case RT_DEVICE_CTRL_WDT_GET_TIMEOUT:
         {
-            *(uint16_t *)args = WDT_RELOAD_SECOND;
+            *(uint16_t *)args = ((Relv_value * LsiFreq) / Prediv);
         }
         break;
         case RT_DEVICE_CTRL_WDT_SET_TIMEOUT:
@@ -115,7 +115,7 @@ static rt_err_t n32g45x_wdog_control(rt_watchdog_t *wdt, int cmd, void *args)
         }
         break;
         case RT_DEVICE_CTRL_WDT_GET_TIMELEFT:
-            *(uint16_t *)args = WDT_RELOAD_SECOND - \
+            *(uint16_t *)args = ((Relv_value * LsiFreq) / Prediv) - \
                                 (rt_tick_get() - last_tick) / RT_TICK_PER_SECOND;
 
             break;

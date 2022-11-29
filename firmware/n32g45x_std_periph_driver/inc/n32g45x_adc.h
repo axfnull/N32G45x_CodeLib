@@ -528,6 +528,9 @@ typedef struct
 /**
  * @}
  */
+ 
+#define ADC_CLOCK_PLL           ((uint32_t)ADC_CTRL3_CKMOD_MSK)
+#define ADC_CLOCK_AHB           ((uint32_t)(~ADC_CTRL3_CKMOD_MSK))
 
 /**@addtogroup ADC_sampt3_definition
  * @{

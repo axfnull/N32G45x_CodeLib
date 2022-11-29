@@ -171,13 +171,7 @@ void QspiInit(QSPI_FORMAT_SEL qspi_format_sel, QSPI_DATA_DIR data_dir, uint16_t 
             QSPI_InitStruct.RXFT                 = QSPI_RXFT_TFI_0; //receive fifo threshold
              
             QSPI_InitStruct.ENHANCED_CLK_STRETCH_EN = QSPI_ENH_CTRL0_CLK_STRETCH_EN; //enable stretch
-            QSPI_InitStruct.ENHANCED_XIP_CT_EN      = QSPI_ENH_CTRL0_XIP_CT_EN; //enable continuous transfer in XIP mode
-            QSPI_InitStruct.ENHANCED_XIP_INST_EN    = QSPI_ENH_CTRL0_XIP_INST_EN; //enable XIP instruction
-            QSPI_InitStruct.ENHANCED_XIP_DFS_HC     = QSPI_ENH_CTRL0_XIP_DFS_HC; //Fix DFS for XIP transfer
-            QSPI_InitStruct.ENHANCED_ADDR_LEN       = QSPI_ENH_CTRL0_ADDR_LEN_24_BIT; //length of address to transmit
-            QSPI_InitStruct.ENHANCED_INST_L         = QSPI_ENH_CTRL0_INST_L_8_LINE; //instruction length
-            QSPI_InitStruct.ENHANCED_WAIT_CYCLES    = QSPI_ENH_CTRL0_WAIT_8CYCLES; //wait cycles of dummy
-            
+
             QSPI_InitStruct.XIP_MBL         = QSPI_XIP_CTRL_XIP_MBL_LEN_8_BIT; //XIP mode bits length
             QSPI_InitStruct.XIP_CT_EN       = QSPI_XIP_CTRL_XIP_CT_EN; //enable continuous transfer in XIP mode
             QSPI_InitStruct.XIP_INST_EN     = QSPI_XIP_CTRL_XIP_INST_EN; //enable XIP instruction
@@ -218,21 +212,20 @@ void QSPI_DMA_Config(uint32_t PeripheraAddr, uint32_t MemoryAddr, uint16_t Len, 
     DMA_ChannelType* DMAyChx;
     uint32_t Direction;
 
-
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_AFIO, ENABLE);
     RCC_EnableAHBPeriphClk(RCC_AHB_PERIPH_DMA2, ENABLE);
 
     if (TxRx == QSPI_DMA_CTRL_TX_DMA_EN) // DMA send enable
     {
+        QSPI_Tx_DMA_CTRL_Config(ENABLE, 1);
         DMAyChx     = QSPI_TX_DMN_CH;
         Direction   = DMA_DIR_PERIPH_DST; //data direction:internal memory -> peripheral device
-        DMA_RequestRemap(DMA2_REMAP_QSPI_TX, DMA2, DMAyChx, ENABLE);
     }
     if (TxRx == QSPI_DMA_CTRL_RX_DMA_EN) // DMA receive enable
     {
+        QSPI_Rx_DMA_CTRL_Config(ENABLE, 1);
         DMAyChx     = QSPI_RX_DMN_CH;
         Direction   = DMA_DIR_PERIPH_SRC; //data direction:peripheral device -> internal memory
-        DMA_RequestRemap(DMA2_REMAP_QSPI_RX, DMA2, DMAyChx, ENABLE);
     }
 
     DMA_DeInit(DMAyChx);
@@ -249,6 +242,5 @@ void QSPI_DMA_Config(uint32_t PeripheraAddr, uint32_t MemoryAddr, uint16_t Len, 
     DMA_InitStructure.Mem2Mem        = DMA_M2M_DISABLE;   // not memory-to-memory mode
     DMA_Init(DMAyChx, &DMA_InitStructure);                
 
-    QSPI_DMA_CTRL_Config(TxRx,1,1);
     DMA_EnableChannel(DMAyChx, ENABLE); // Enable DMA
 }

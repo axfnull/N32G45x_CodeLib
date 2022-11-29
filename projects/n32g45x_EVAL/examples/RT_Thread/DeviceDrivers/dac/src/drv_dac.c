@@ -34,7 +34,6 @@
  */
 
 #include <rtthread.h>
-#include <rt_config.h>
 #include "n32g45x_dac.h"
 #include "n32g45x.h"
 #include "dac.h"
@@ -71,29 +70,12 @@ static void n32g45x_dac_init(struct n32g45x_dac_config *config)
 
     /* DAC Periph clock enable */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_DAC, ENABLE);
-    /* DAC channel1 Configuration */
+    /* DAC channel Configuration */
     DAC_InitStructure.Trigger          = DAC_TRG_SOFTWARE;
     DAC_InitStructure.WaveGen          = DAC_WAVEGEN_NOISE;
     DAC_InitStructure.LfsrUnMaskTriAmp = DAC_UNMASK_LFSRBIT0;
     DAC_InitStructure.BufferOutput     = DAC_BUFFOUTPUT_ENABLE;
     DAC_Init(config->dac_periph, &DAC_InitStructure);
-
-    /* Enable DAC Channel1: Once the DAC channel1 is enabled, PA.04 is
-       automatically connected to the DAC converter. 
-       Enable DAC Channel2: Once the DAC channel2 is enabled, PA.05 is
-       automatically connected to the DAC converter.*/
-    DAC_Enable(config->dac_periph, ENABLE);
-    
-    if(config->dac_periph == DAC_CHANNEL_1)
-    {
-        /* Set DAC Channel1 DHR12L register */
-        DAC_SetCh1Data(DAC_ALIGN_R_12BIT, 4094);
-    }
-    else
-    {
-        /* Set DAC Channel2 DHR12L register */
-        DAC_SetCh2Data(DAC_ALIGN_R_12BIT, 4094);
-    }
 }
 
 static rt_err_t n32g45x_dac_enabled(struct rt_dac_device *device, rt_uint32_t channel)
@@ -119,29 +101,24 @@ static rt_err_t n32g45x_set_dac_value(struct rt_dac_device *device, rt_uint32_t 
     RT_ASSERT(device != RT_NULL);    
     rt_uint16_t set_value = 0;
     set_value = (rt_uint16_t)*value;
-    /* Start DAC Channel conversion by software */
-    if(channel == DAC_CHANNEL_1)
-    {
-        DAC_SoftTrgEnable(DAC_CHANNEL_1, ENABLE);
-    }
-    else
-    {
-        DAC_SoftTrgEnable(DAC_CHANNEL_2, ENABLE);
-    }
     
     if(set_value > 4096)
     {
         set_value = 4096;
     }
+    
+    /* Start DAC Channel conversion by software */
     if(channel == DAC_CHANNEL_1)
     {
         DAC_SetCh1Data(DAC_ALIGN_R_12BIT, set_value);
+        DAC_SoftTrgEnable(DAC_CHANNEL_1, ENABLE);
     }
     else
     {
         DAC_SetCh2Data(DAC_ALIGN_R_12BIT, set_value);
+        DAC_SoftTrgEnable(DAC_CHANNEL_2, ENABLE);
     }
-    
+
     return RT_EOK;
 }
 

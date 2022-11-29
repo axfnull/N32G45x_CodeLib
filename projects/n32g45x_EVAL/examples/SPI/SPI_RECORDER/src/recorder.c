@@ -103,7 +103,7 @@ uint8_t rec_play_wav()
     uint8_t rval=0;
     uint8_t *databuf;
     uint16_t i=0;
-    uint32_t sectorsize=0,n=0;
+    unsigned int sectorsize=0,n=0;
     uint16_t data_size = 512;
     
     databuf = mymalloc(data_size);
@@ -168,7 +168,7 @@ uint8_t recoder_play(void)
     uint8_t key;
     uint8_t rval=0;
     __WaveHeader *wavhead=0;
-    uint32_t sectorsize=0;
+    unsigned int sectorsize=0;
     uint8_t *recbuf = {0};  
     uint16_t w;
     uint16_t idx=0;     

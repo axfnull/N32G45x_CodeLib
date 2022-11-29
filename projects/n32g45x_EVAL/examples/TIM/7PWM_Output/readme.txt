@@ -2,7 +2,7 @@
     1、TIM1和TIM8输出3路互补波形和一路CH4波形
 2、使用环境
     软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G4XV-STB V1.0 EVB开发
+    硬件环境：      基于N32G4XVL-STB V1.1开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -30,3 +30,36 @@
         2、输出波形TIM1 3路互补加一路CH4，TIM8 3路互补加一路CH4
 4、注意事项
     无
+    
+1. Function description
+    1. TIM1 and TIM8 output 3 complementary waveforms and one CH4 waveform
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.26.2.0
+    Hardware environment: Developed based on N32G4XVL-STB V1.1
+3. Instructions for use
+    System Configuration;
+        1. Clock source:
+                    HSE=8M, PLL=144M, AHB=144M, APB1=36M, APB2=72M, TIM1 CLK=144M
+        2. Port configuration:
+                    PA8 is selected as TIM1 CH1 output
+                    PA9 is selected as TIM1 CH2 output
+                    PA10 is selected as TIM1 CH3 output
+                    PB13 is selected as TIM1 CH1N output
+                    PB14 is selected as TIM1 CH2N output
+                    PB15 is selected as TIM1 CH3N output
+                    PA11 is selected as TIM1 CH4 output
+                    PC6 is selected as TIM8 CH1 output
+                    PC7 is selected as TIM8 CH2 output
+                    PC8 is selected as TIM8 CH3 output
+                    PA7 is selected as TIM8 CH1N output
+                    PB0 is selected as TIM8 CH2N output
+                    PB1 is selected as TIM8 CH3N output
+                    PC9 is selected as TIM8 CH4 output
+        3. TIM:
+                    TIM1 6 complementary outputs, CH4 output
+                    TIM8 6 complementary outputs, CH4 output
+    Instructions:
+        1. After compiling, turn on the debug mode, use an oscilloscope or logic analyzer to observe the output waveform of TIM1 TIM8
+        2. Output waveform TIM1 3 complementary plus one CH4, TIM8 3 complementary plus one CH4
+4. Matters needing attention
+    without

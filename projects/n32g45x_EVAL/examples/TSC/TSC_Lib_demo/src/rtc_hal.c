@@ -160,10 +160,10 @@ void RTC_DateShow(void)
     /* Get the current Date */
     RTC_GetDate(RTC_FORMAT_BIN, &(SystemTime.Date));
     log_debug("//=========== Current Date Display ==============// \r\n");
-    log_debug("The current date (WeekDay-Date-Month-Year) is :  %0.2d-%0.2d-%0.2d-%0.2d \r\n",
-             SystemTime.Date.WeekDay,
-             SystemTime.Date.Date,
-             SystemTime.Date.Month,
+    log_debug("The current date (WeekDay-Date-Month-Year) is :  %02d-%02d-%02d-%02d \r\n",  \
+             SystemTime.Date.WeekDay,                                                           \
+             SystemTime.Date.Date,                                                              \
+             SystemTime.Date.Month,                                                             \
              SystemTime.Date.Year);
 }
 
@@ -177,9 +177,9 @@ void RTC_TimeShow(void)
     /* Get the current Time and Date */
     RTC_GetTime(RTC_FORMAT_BIN, &(SystemTime.Time));
     log_debug("\r\n //============ Current Time Display ===============// \r\n");
-    log_debug("\r\n The current time (Hour-Minute-Second) is :  %0.2d:%0.2d:%0.2d \r\n",
-             SystemTime.Time.Hours,
-             SystemTime.Time.Minutes,
+    log_debug("\r\n The current time (Hour-Minute-Second) is :  %02d:%02d:%02d \r\n",    \
+             SystemTime.Time.Hours,                                                         \
+             SystemTime.Time.Minutes,                                                       \
              SystemTime.Time.Seconds);
     
     /* Unfreeze the RTC DAT Register */
@@ -471,13 +471,13 @@ void rtc_time_get(SYSTEM_TIME_T* DateTime)
     RTC_GetTime(RTC_FORMAT_BIN, &(DateTime->Time));
     RTC_GetDate(RTC_FORMAT_BIN, &(DateTime->Date));
 
-    log_debug("get system time: 20%02d-%02d-%02d  %02d-%02d-%02d weekday %d\r\n",
-            DateTime->Date.Year,
-            DateTime->Date.Month,
-            DateTime->Date.Date,
-            DateTime->Time.Hours,
-            DateTime->Time.Minutes,
-            DateTime->Time.Seconds,
+    log_debug("get system time: 20%02d-%02d-%02d  %02d-%02d-%02d weekday %d\r\n",   \
+            DateTime->Date.Year,                                                    \
+            DateTime->Date.Month,                                                   \
+            DateTime->Date.Date,                                                    \
+            DateTime->Time.Hours,                                                   \
+            DateTime->Time.Minutes,                                                 \
+            DateTime->Time.Seconds,                                                 \
             DateTime->Date.WeekDay);
 }
 
@@ -504,12 +504,12 @@ void rtc_time_set(SYSTEM_TIME_T* DateTime, uint32_t format)
     SystemTime.Date.WeekDay =  DateTime->Date.WeekDay;
     RTC_SetDate(format, &(SystemTime.Date));
 
-    log_debug("set system time: 20%02d-%02d-%02d  %02d-%02d-%02d\r\n",
-            SystemTime.Date.Year,
-            SystemTime.Date.Month,
-            SystemTime.Date.Date,
-            SystemTime.Time.Hours,
-            SystemTime.Time.Minutes,
+    log_debug("set system time: 20%02d-%02d-%02d  %02d-%02d-%02d\r\n",  \
+            SystemTime.Date.Year,                                       \
+            SystemTime.Date.Month,                                      \
+            SystemTime.Date.Date,                                       \
+            SystemTime.Time.Hours,                                      \
+            SystemTime.Time.Minutes,                                    \
             SystemTime.Time.Seconds);
 }
 

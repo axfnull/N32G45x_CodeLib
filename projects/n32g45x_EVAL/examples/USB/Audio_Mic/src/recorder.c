@@ -71,7 +71,7 @@ void recoder_enter_rec_mode(uint16_t agc)
     VS_WR_Cmd(SPI_AICTRL3,6);       //MIC 6:single left channel input PCM  5:double channel input PCM
     VS_WR_Cmd(SPI_CLOCKF,0x2000);   //set vs10xx clock,MULT:2 doube frequency;ADD:not allow;CLK:12.288Mhz
     VS_WR_Cmd(SPI_MODE,0x1804);     //MIC,recoder active   
-    delay_ms(5);                    //wait at least 1.35ms 
+    systick_delay_ms(5);                    //wait at least 1.35ms 
     VS_Load_Patch((uint16_t*)wav_plugin,40);//VS1053 WAV recoder need patch
 }
  

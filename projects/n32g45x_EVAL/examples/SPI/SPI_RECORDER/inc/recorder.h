@@ -38,7 +38,7 @@
 #include "stdint.h"
 
  //RIFF block
-typedef __packed struct
+typedef struct
 {
     uint32_t ChunkID;           //chunk id;it is "RIFF",0X46464952
     uint32_t ChunkSize ;        //chunksize;filesize-8
@@ -46,7 +46,7 @@ typedef __packed struct
 }ChunkRIFF ;
 
 //fmt block
-typedef __packed struct
+typedef struct
 {
     uint32_t ChunkID;               //chunk id;it is "fmt ",0X20746D66
     uint32_t ChunkSize ;            //chunksize(not include ID and Size);it is 20.
@@ -59,7 +59,7 @@ typedef __packed struct
 }ChunkFMT;
 
 //fact block
-typedef __packed struct 
+typedef struct 
 {
     uint32_t ChunkID;           //chunk id;it is"fact",0X74636166;
     uint32_t ChunkSize ;        //chunksize(not include ID and Size);it is 4
@@ -67,14 +67,14 @@ typedef __packed struct
 }ChunkFACT;
 
 //data block
-typedef __packed struct 
+typedef struct 
 {
     uint32_t ChunkID;           //chunk id;it is"data",0X61746164
     uint32_t ChunkSize ;        //chunksize(not include ID and Size);file size -60.
 }ChunkDATA;
 
 //wav header
-typedef __packed struct
+typedef struct
 { 
     ChunkRIFF riff; //riff block
     ChunkFMT fmt;   //fmt block

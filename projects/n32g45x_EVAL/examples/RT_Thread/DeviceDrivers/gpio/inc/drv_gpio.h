@@ -36,7 +36,6 @@
 #ifndef __DRV_GPIO_H__
 #define __DRV_GPIO_H__
 
-#include <drv_common.h>
 #include "n32g45x.h"
 
 #define __N32G45X_PORT(port)  GPIO##port##_BASE
@@ -63,7 +62,7 @@ struct pin_index
 
 struct pin_irq_map
 {
-    rt_uint16_t pinbit;
+    uint16_t pinbit;
     IRQn_Type irqno;
 };
 

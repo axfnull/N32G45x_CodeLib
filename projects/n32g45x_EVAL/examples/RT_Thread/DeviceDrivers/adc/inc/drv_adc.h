@@ -33,8 +33,8 @@
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 
-#ifndef __DRV_ADC__
-#define __DRV_ADC__
+#ifndef __DRV_ADC_H__
+#define __DRV_ADC_H__
 
 #include <rtthread.h>
 #include <rtdevice.h>
@@ -57,4 +57,4 @@ struct n32g45x_adc
 
 int rt_hw_adc_init(void);
 
-#endif
+#endif /* __DRV_ADC_H__ */

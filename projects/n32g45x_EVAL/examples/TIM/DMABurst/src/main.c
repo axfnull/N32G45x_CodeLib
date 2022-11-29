@@ -89,10 +89,7 @@ int main(void)
     The TIM1CLK frequency is set to SystemCoreClock (Hz), to get TIM1 counter
     clock at 24 MHz the Prescaler is computed as following:
      - Prescaler = (TIM1CLK / TIM1 counter clock) - 1
-    SystemCoreClock is set to 72 MHz for Low-density, Medium-density, High-density
-    and Connectivity line devices and to 24 MHz for Low-Density Value line and
-    Medium-Density Value line devices
-
+    
     The TIM1 period is 5.8 KHz: TIM1 Frequency = TIM1 counter clock/(AR + 1)
                                                = 24 MHz / 4096 = 5.8KHz KHz
     TIM1 Channel1 duty cycle = (TIM1_CCR1/ TIM1_ARR)* 100 = 33.33%

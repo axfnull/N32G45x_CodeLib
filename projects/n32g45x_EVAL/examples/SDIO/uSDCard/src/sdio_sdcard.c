@@ -154,6 +154,8 @@ this array is needed to ensure that the data cache address is 4-byte aligned
 #pragma pack(4) 
 u8 SDIO_DATA_BUFFER[512];
 #pragma pack() 
+#elif __GCC_ARM
+__attribute__((aligned(4))) u8 SDIO_DATA_BUFFER[512];
 #else
 __align(4) u8 SDIO_DATA_BUFFER[512];
 #endif
@@ -480,11 +482,10 @@ void GPIO_Configuration(void)
 
 static void Delay_sdio_lock(u32 count)
 {
-    volatile u32 j;
     u32 i;
     for (i = 0; i < count; i++)
     {
-        j = i;
+        ;
     }
 }
 
@@ -4508,7 +4509,6 @@ SD_Error SD_SendACMDS(uint8_t* writebuff, uint32_t WriteAddr, uint16_t BlockSize
 {
     (void)BlockSize;
     SD_Error errorstatus = SD_OK;
-    __IO uint32_t count  = 0;
 
     TransferError = SD_OK;
     TransferEnd   = 0;
@@ -4575,7 +4575,6 @@ SD_Error SD_SendACMDS(uint8_t* writebuff, uint32_t WriteAddr, uint16_t BlockSize
 SD_Error SD_WriteMultiBlocks(uint8_t* writebuff, uint32_t WriteAddr, uint16_t BlockSize, uint32_t NumberOfBlocks)
 {
     SD_Error errorstatus = SD_OK;
-    __IO uint32_t count  = 0;
 
     TransferError = SD_OK;
     TransferEnd   = 0;
