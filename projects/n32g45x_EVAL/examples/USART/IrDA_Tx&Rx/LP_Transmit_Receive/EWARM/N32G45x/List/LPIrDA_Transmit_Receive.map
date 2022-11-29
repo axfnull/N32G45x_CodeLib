@@ -1,0 +1,379 @@
+###############################################################################
+#
+# IAR ELF Linker V7.70.2.11706/W32 for ARM                22/Sep/2021  15:47:30
+# Copyright 2007-2016 IAR Systems AB.
+#
+#    Output file  =  
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Exe\LPIrDA_Transmit_Receive.out
+#    Map file     =  
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\List\LPIrDA_Transmit_Receive.map
+#    Command line =  
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\bsp_Tim_38K.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\main.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\misc.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_dma.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_gpio.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_it.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_rcc.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_tim.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\n32g45x_usart.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\startup_n32g45x_EWARM.o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj\system_n32g45x.o
+#        -o
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Exe\LPIrDA_Transmit_Receive.out
+#        --map
+#        D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\List\LPIrDA_Transmit_Receive.map
+#        --config "C:\Program Files (x86)\IAR Systems\Embedded Workbench
+#        7.5\arm\config\linker\Nations\N32G45x\N32G457xE.icf" --semihosting
+#        --entry __iar_program_start --vfe
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at 0x08000000 { ro section .intvec };
+"P1":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x08000000 to 0x0807ffff] { ro };
+"P3":  place in [from 0x00000000 to 0x00000000] |
+                [from 0x20000000 to 0x20023fff] {
+          rw, block CSTACK, block PROC_STACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind        Address    Size  Object
+  -------            ----        -------    ----  ------
+"A0":                                      0x198
+  .intvec            ro code  0x08000000   0x198  startup_n32g45x_EWARM.o [1]
+                            - 0x08000198   0x198
+
+"P1":                                     0x1330
+  .text              ro code  0x08000198   0x2ec  n32g45x_gpio.o [1]
+  .text              ro code  0x08000484   0x214  n32g45x_dma.o [1]
+  .text              ro code  0x08000698   0x20c  main.o [1]
+  .text              ro code  0x080008a4    0x7c  misc.o [1]
+  .text              ro code  0x08000920   0x108  bsp_Tim_38K.o [1]
+  .text              ro code  0x08000a28   0x1e4  n32g45x_usart.o [1]
+  .text              ro code  0x08000c0c   0x168  n32g45x_rcc.o [1]
+  .text              ro code  0x08000d74   0x1f4  n32g45x_tim.o [1]
+  .text              ro code  0x08000f68   0x1d0  system_n32g45x.o [1]
+  .text              ro code  0x08001138    0x60  n32g45x_it.o [1]
+  .text              ro code  0x08001198    0x40  zero_init3.o [5]
+  .text              ro code  0x080011d8    0x2c  copy_init3.o [5]
+  .text              ro code  0x08001204    0x28  data_init.o [5]
+  .text              ro code  0x0800122c    0x22  fpinit_M.o [4]
+  .iar.init_table    const    0x08001250    0x24  - Linker created -
+  .rodata            const    0x08001274    0x20  n32g45x_rcc.o [1]
+  .text              ro code  0x08001294    0x1a  cmain.o [5]
+  .text              ro code  0x080012ae     0x4  low_level_init.o [3]
+  .text              ro code  0x080012b2     0x4  exit.o [3]
+  .text              ro code  0x080012b8     0xa  cexit.o [5]
+  .text              ro code  0x080012c4    0x14  exit.o [6]
+  .rodata            const    0x080012d8    0x10  n32g45x_rcc.o [1]
+  .rodata            const    0x080012e8    0x10  n32g45x_rcc.o [1]
+  .text              ro code  0x080012f8    0x10  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001308     0xc  cstartup_M.o [5]
+  .text              ro code  0x08001314     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001318     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800131c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001320     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001324     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001328     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800132c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001330     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001334     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001338     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800133c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001340     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001344     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001348     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800134c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001350     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001354     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001358     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800135c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001360     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001364     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001368     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800136c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001370     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001374     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001378     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800137c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001380     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001384     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001388     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800138c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001390     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001394     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001398     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800139c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013a0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013a4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013a8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013ac     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013b0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013b4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013b8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013bc     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013c0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013c4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013c8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013cc     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013d0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013d4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013d8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013dc     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013e0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013e4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013e8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013ec     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013f0     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013f4     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013f8     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x080013fc     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001400     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001404     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001408     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800140c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001410     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001414     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001418     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800141c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001420     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001424     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001428     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800142c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001430     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001434     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001438     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800143c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001440     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001444     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001448     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800144c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001450     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001454     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001458     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x0800145c     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001460     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001464     0x4  startup_n32g45x_EWARM.o [1]
+  .text              ro code  0x08001468     0x4  startup_n32g45x_EWARM.o [1]
+  .rodata            const    0x0800146c     0x0  zero_init3.o [5]
+  .rodata            const    0x0800146c     0x0  copy_init3.o [5]
+  Initializer bytes  const    0x0800146c    0x5c  <for P3 s0>
+                            - 0x080014c8  0x1330
+
+"P3", part 1 of 3:                          0x5c
+  P3 s0                       0x20000000    0x5c  <Init block>
+    .data            inited   0x20000000    0x4c  main.o [1]
+    .data            inited   0x2000004c     0x8  bsp_Tim_38K.o [1]
+    .data            inited   0x20000054     0x4  system_n32g45x.o [1]
+    .data            inited   0x20000058     0x1  main.o [1]
+                            - 0x2000005c    0x5c
+
+"P3", part 2 of 3:                          0x60
+  .bss               zero     0x2000005c    0x4c  main.o [1]
+  .bss               zero     0x200000a8    0x10  main.o [1]
+  .bss               zero     0x200000b8     0x1  main.o [1]
+  .bss               zero     0x200000b9     0x1  main.o [1]
+  .bss               zero     0x200000ba     0x1  main.o [1]
+                            - 0x200000bb    0x5f
+
+"P3", part 3 of 3:                        0x1500
+  CSTACK                      0x200000c0  0x1500  <Block>
+    CSTACK           uninit   0x200000c0  0x1500  <Block tail>
+                            - 0x200015c0  0x1500
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address     Size
+          -------     ----
+Zero (__iar_zero_init3)
+    1 destination range, total size 0x5f:
+          0x2000005c  0x5f
+
+Copy (__iar_copy_init3)
+    1 source range, total size 0x5c (103% of destination):
+          0x0800146c  0x5c
+    1 destination range, total size 0x59:
+          0x20000000  0x59
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                   ro code  ro data  rw data
+    ------                   -------  -------  -------
+D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj: [1]
+    bsp_Tim_38K.o                264        8        8
+    main.o                       524       77      172
+    misc.o                       124
+    n32g45x_dma.o                532
+    n32g45x_gpio.o               748
+    n32g45x_it.o                  96
+    n32g45x_rcc.o                360       64
+    n32g45x_tim.o                500
+    n32g45x_usart.o              484
+    startup_n32g45x_EWARM.o      768
+    system_n32g45x.o             464        4        4
+    --------------------------------------------------
+    Total:                     4 864      153      184
+
+command line: [2]
+    --------------------------------------------------
+    Total:
+
+dl7M_tlf.a: [3]
+    exit.o                         4
+    low_level_init.o               4
+    --------------------------------------------------
+    Total:                         8
+
+m7M_tls.a: [4]
+    fpinit_M.o                    34
+    --------------------------------------------------
+    Total:                        34
+
+rt7M_tl.a: [5]
+    cexit.o                       10
+    cmain.o                       26
+    copy_init3.o                  44
+    cstartup_M.o                  12
+    data_init.o                   40
+    zero_init3.o                  64
+    --------------------------------------------------
+    Total:                       196
+
+shb_l.a: [6]
+    exit.o                        20
+    --------------------------------------------------
+    Total:                        20
+
+    Gaps                           4        2
+    Linker created                         39    5 376
+------------------------------------------------------
+    Grand Total:               5 126      194    5 560
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                      Address   Size  Type      Object
+-----                      -------   ----  ----      ------
+.iar.init_table$$Base   0x08001250          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x08001274          --   Gb  - Linker created -
+?main                   0x08001295         Code  Gb  cmain.o [5]
+ADVANCE_TIM_Configuration
+                        0x0800095d   0x42  Code  Gb  bsp_Tim_38K.o [1]
+ADVANCE_TIM_GPIO_Configuration
+                        0x0800093f   0x1e  Code  Gb  bsp_Tim_38K.o [1]
+ADVANCE_TIM_Init        0x08000a15   0x14  Code  Gb  bsp_Tim_38K.o [1]
+ADVANCE_TIM_RCC_Configuration
+                        0x08000921   0x1e  Code  Gb  bsp_Tim_38K.o [1]
+Buffercmp               0x0800086d   0x24  Code  Gb  main.o [1]
+BusFault_Handler        0x0800113f    0x2  Code  Gb  n32g45x_it.o [1]
+CSTACK$$Base            0x200000c0          --   Gb  - Linker created -
+CSTACK$$Limit           0x200015c0          --   Gb  - Linker created -
+DMA_Configuration       0x0800099f   0x5c  Code  Gb  bsp_Tim_38K.o [1]
+DMA_DeInit              0x08000485  0x15a  Code  Gb  n32g45x_dma.o [1]
+DMA_EnableChannel       0x08000665   0x1c  Code  Gb  n32g45x_dma.o [1]
+DMA_Init                0x08000629   0x3c  Code  Gb  n32g45x_dma.o [1]
+DMA_RequestRemap        0x08000681   0x18  Code  Gb  n32g45x_dma.o [1]
+DebugMon_Handler        0x08001145    0x2  Code  Gb  n32g45x_it.o [1]
+Delay                   0x08000891   0x14  Code  Gb  main.o [1]
+GPIO_ConfigPinRemap     0x08000259  0x216  Code  Gb  n32g45x_gpio.o [1]
+GPIO_Configuration      0x080007e5   0x5a  Code  Gb  main.o [1]
+GPIO_InitPeripheral     0x08000199   0xc0  Code  Gb  n32g45x_gpio.o [1]
+HardFault_Handler       0x0800113b    0x2  Code  Gb  n32g45x_it.o [1]
+MemManage_Handler       0x0800113d    0x2  Code  Gb  n32g45x_it.o [1]
+Memset                  0x08000699   0x16  Code  Lc  main.o [1]
+NMI_Handler             0x08001139    0x2  Code  Gb  n32g45x_it.o [1]
+NVIC_Configuration      0x080006af   0x24  Code  Gb  main.o [1]
+NVIC_Init               0x080008af   0x5e  Code  Gb  misc.o [1]
+NVIC_PriorityGroupConfig
+                        0x080008a5    0xa  Code  Gb  misc.o [1]
+NbrOfDataToRead1        0x20000058    0x1  Data  Gb  main.o [1]
+PinOutputValue_Px3      0x2000004c    0x8  Data  Gb  bsp_Tim_38K.o [1]
+RCC_Configuration       0x080007c5   0x20  Code  Gb  main.o [1]
+RCC_EnableAHBPeriphClk  0x08000ce9   0x20  Code  Gb  n32g45x_rcc.o [1]
+RCC_EnableAPB1PeriphClk
+                        0x08000d29   0x20  Code  Gb  n32g45x_rcc.o [1]
+RCC_EnableAPB2PeriphClk
+                        0x08000d09   0x20  Code  Gb  n32g45x_rcc.o [1]
+RCC_GetClocksFreqValue  0x08000c0d   0xdc  Code  Gb  n32g45x_rcc.o [1]
+Region$$Table$$Base     0x08001250          --   Gb  - Linker created -
+Region$$Table$$Limit    0x08001274          --   Gb  - Linker created -
+RxBuffer1               0x2000005c   0x4c  Data  Gb  main.o [1]
+RxCounter               0x200000b9    0x1  Data  Gb  main.o [1]
+SVC_Handler             0x08001143    0x2  Code  Gb  n32g45x_it.o [1]
+SetSysClock             0x08001005   0xf2  Code  Lc  system_n32g45x.o [1]
+SysTick_Handler         0x08001147    0x2  Code  Gb  n32g45x_it.o [1]
+SystemCoreClock         0x20000054    0x4  Data  Gb  system_n32g45x.o [1]
+SystemInit              0x08000f69   0x9c  Code  Gb  system_n32g45x.o [1]
+TIM_Enable              0x08000f1d   0x1a  Code  Gb  n32g45x_tim.o [1]
+TIM_EnableDma           0x08000f37   0x18  Code  Gb  n32g45x_tim.o [1]
+TIM_InitTimBaseStruct   0x08000eed   0x30  Code  Gb  n32g45x_tim.o [1]
+TIM_InitTimeBase        0x08000d75  0x172  Code  Gb  n32g45x_tim.o [1]
+TransferStatus          0x200000ba    0x1  Data  Gb  main.o [1]
+TxBuffer1               0x20000000   0x4c  Data  Gb  main.o [1]
+TxCounter               0x200000b8    0x1  Data  Gb  main.o [1]
+USART2_IRQHandler       0x08001149   0x40  Code  Gb  n32g45x_it.o [1]
+USART_ConfigInt         0x08000aed   0x52  Code  Gb  n32g45x_usart.o [1]
+USART_ConfigIrDAMode    0x08000b61   0x12  Code  Gb  n32g45x_usart.o [1]
+USART_Enable            0x08000ad1   0x1c  Code  Gb  n32g45x_usart.o [1]
+USART_EnableIrDA        0x08000b73   0x1c  Code  Gb  n32g45x_usart.o [1]
+USART_GetFlagStatus     0x08000b8f   0x1a  Code  Gb  n32g45x_usart.o [1]
+USART_GetIntStatus      0x08000ba9   0x64  Code  Gb  n32g45x_usart.o [1]
+USART_Init              0x08000a29   0x9a  Code  Gb  n32g45x_usart.o [1]
+USART_InitStructure     0x200000a8   0x10  Data  Gb  main.o [1]
+USART_ReceiveData       0x08000b47    0x8  Code  Gb  n32g45x_usart.o [1]
+USART_SendData          0x08000b3f    0x8  Code  Gb  n32g45x_usart.o [1]
+USART_SetPrescaler      0x08000b4f   0x12  Code  Gb  n32g45x_usart.o [1]
+UsageFault_Handler      0x08001141    0x2  Code  Gb  n32g45x_it.o [1]
+__cmain                 0x08001295         Code  Gb  cmain.o [5]
+__exit                  0x080012c5   0x14  Code  Gb  exit.o [6]
+__iar_copy_init3        0x080011d9   0x2c  Code  Gb  copy_init3.o [5]
+__iar_data_init3        0x08001205   0x28  Code  Gb  data_init.o [5]
+__iar_init_vfp          0x0800122d         Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x08001309         Code  Gb  cstartup_M.o [5]
+__iar_zero_init3        0x08001199   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x080012af    0x4  Code  Gb  low_level_init.o [3]
+__vector_table          0x08000000         Data  Gb  startup_n32g45x_EWARM.o [1]
+_call_main              0x080012a1         Code  Gb  cmain.o [5]
+_exit                   0x080012b9         Code  Gb  cexit.o [5]
+_main                   0x080012ab         Code  Gb  cmain.o [5]
+exit                    0x080012b3    0x4  Code  Gb  exit.o [3]
+main                    0x080006d3   0xf2  Code  Gb  main.o [1]
+s_AdcHclkPresTable      0x080012e8   0x10  Data  Lc  n32g45x_rcc.o [1]
+s_AdcPllClkPresTable    0x08001274   0x20  Data  Lc  n32g45x_rcc.o [1]
+s_ApbAhbPresTable       0x080012d8   0x10  Data  Lc  n32g45x_rcc.o [1]
+
+
+[1] = D:\linfuliang_work\pro\NS3601\SVN_tmp\SDK_Make\N32G45x\projects\n32g45x_EVAL\examples\USART\IrDA_Tx&Rx\LP_Transmit_Receive\EWARM\N32G45x\Obj
+[2] = command line
+[3] = dl7M_tlf.a
+[4] = m7M_tls.a
+[5] = rt7M_tl.a
+[6] = shb_l.a
+
+  5 126 bytes of readonly  code memory
+    194 bytes of readonly  data memory
+  5 560 bytes of readwrite data memory
+
+Errors: none
+Warnings: none
